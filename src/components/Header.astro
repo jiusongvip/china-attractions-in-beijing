@@ -1,0 +1,30 @@
+---
+import Icons from "./Icons.astro";
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-base-200">
+  <nav class="container-page mx-auto max-w-7xl flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+    <a href="/" class="font-semibold text-lg text-base-900 hover:text-accent transition-colors flex items-center gap-2">
+      <Icons name="building-castle" size={22} class="text-accent" />
+      <span class="hidden sm:inline">China Attractions in Beijing</span>
+      <span class="sm:hidden">BJ Attractions</span>
+    </a>
+    <div class="flex items-center gap-6 text-sm font-medium text-base-600">
+      <a href="/attractions/forbidden-city" class="hidden md:inline hover:text-accent transition-colors">Attractions</a>
+      <a href="/collections/beijing-3-day-itinerary" class="hidden md:inline hover:text-accent transition-colors">Itineraries</a>
+      <a href="/compare" class="hidden md:inline hover:text-accent transition-colors">Compare</a>
+      <a href="/blog" class="hidden md:inline hover:text-accent transition-colors">Blog</a>
+      <details class="md:hidden relative">
+        <summary class="list-none p-2 -mr-2 text-base-600 cursor-pointer" aria-label="Menu">
+          <Icons name="menu" size={22} />
+        </summary>
+        <div class="absolute right-0 top-full mt-2 w-48 bg-white border border-base-200 rounded-lg shadow-lg py-2">
+          <a href="/attractions/forbidden-city" class="block px-4 py-2 hover:bg-base-50 transition-colors">Attractions</a>
+          <a href="/collections/beijing-3-day-itinerary" class="block px-4 py-2 hover:bg-base-50 transition-colors">Itineraries</a>
+          <a href="/compare" class="block px-4 py-2 hover:bg-base-50 transition-colors">Compare</a>
+          <a href="/blog" class="block px-4 py-2 hover:bg-base-50 transition-colors">Blog</a>
+        </div>
+      </details>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icons from "../../components/Icons.astro";
+import AttractionCard from "../../components/AttractionCard.astro";
+import { attractions } from "../../data/attractions";
+
+const kidFriendly = attractions.filter((a) => a.familyFriendly);
+---
+
+<BaseLayout title="Beijing with Kids: 10 Family-Friendly Attractions [2026]" description="The best family-friendly Beijing attractions for kids of all ages. From the Great Wall toboggan slide to pandas at the zoo. Safe, fun, and unforgettable.">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">Beijing with Kids</h1>
+    <p class="text-lg text-base-500 leading-relaxed max-w-2xl mb-8">Family-friendly attractions that both kids and adults will love. From giant pandas to the Great Wall toboggan ride.</p>
+  </div>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="max-w-3xl mb-12">
+      <p class="text-base text-base-600 leading-relaxed mb-4">Beijing might seem intimidating with kids, but the city is surprisingly family-friendly. Wide pedestrian paths, affordable public transport, and an abundance of parks and open spaces make it easier than you might expect. The key is choosing the right attractions and pacing your days.</p>
+      <div class="border-l-4 border-accent pl-4 py-2 bg-accent-bg/30 rounded-r mb-6">
+        <p class="text-base text-base-700 leading-relaxed"><strong>Our top pick for families:</strong> Mutianyu Great Wall. The cable car takes the effort out of the climb, the paths are wide and gently sloped, and the toboggan slide down is something your kids will talk about for years. Kids as young as 5 can ride tandem with a parent on the 1,580-meter track through the forest.</p>
+      </div>
+      <h2 class="text-xl font-semibold mb-3">What Makes Beijing Great for Kids</h2>
+      <ul class="space-y-3 text-sm text-base-600 mb-6">
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">1.</span><span><strong>The subway is an attraction in itself.</strong> Clean, safe, and full of English signage. Kids love the futuristic stations and the views from elevated lines. Fares are cheap (CNY 3-9 per ride) and kids under 1.2m ride free.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">2.</span><span><strong>Parks everywhere.</strong> Beijingers treat parks as extensions of their living rooms. Kids will see locals flying elaborate kites, practicing tai chi, and playing traditional instruments. Most parks have playgrounds, boat rentals, and snack vendors.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">3.</span><span><strong>Food is adventure-friendly.</strong> Even picky eaters can find familiar options at major restaurants and hotels. But the real fun is letting kids explore jianbing (savory crepes), baozi (steamed buns), and tanghulu (candied fruit on a stick) from street stalls.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">4.</span><span><strong>Beijingers love children.</strong> Don't be surprised if locals smile at your kids, offer them a seat on the subway, or ask to take a photo. It's genuine friendliness, not anything to worry about.</span></li>
+      </ul>
+      <h2 class="text-xl font-semibold mb-3">Tips for Family Trips</h2>
+      <ul class="space-y-2 text-sm text-base-600 mb-6">
+        <li class="flex items-start gap-2"><span class="text-accent shrink-0">&#10003;</span><span>Start your day early (7-8am) to beat both the heat and the crowds. Most kids are up early with jet lag anyway.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent shrink-0">&#10003;</span><span>Plan one major attraction per day, not two. Beijing sights are big and walking-intensive. Leave the afternoon flexible.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent shrink-0">&#10003;</span><span>Carry snacks and water everywhere. Convenience stores are common but not always right where you need them.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent shrink-0">&#10003;</span><span>Western-style toilets are standard at major attractions and malls, but carry tissues and hand sanitizer for smaller venues.</span></li>
+      </ul>
+    </div>
+    <h2 class="text-2xl font-semibold tracking-tight mb-6">Family-Friendly Attractions ({kidFriendly.length})</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {kidFriendly.map((a) => <AttractionCard attraction={a} />)}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://china-attractions-in-beijing.com/sitemap.xml

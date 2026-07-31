@@ -1,0 +1,39 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-base-900 text-base-300 mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div>
+        <h4 class="text-white text-lg font-semibold mb-4">China Attractions in Beijing</h4>
+        <p class="text-base-400 text-sm leading-relaxed max-w-xs">
+          The most comprehensive guide to Beijing's best attractions. Updated with current ticket prices, subway directions, and honest recommendations.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4 uppercase tracking-wider">Explore</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/attractions/forbidden-city" class="hover:text-white transition-colors">Forbidden City</a></li>
+          <li><a href="/attractions/great-wall-mutianyu" class="hover:text-white transition-colors">Great Wall</a></li>
+          <li><a href="/attractions/temple-of-heaven" class="hover:text-white transition-colors">Temple of Heaven</a></li>
+          <li><a href="/attractions/summer-palace" class="hover:text-white transition-colors">Summer Palace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4 uppercase tracking-wider">Resources</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/compare" class="hover:text-white transition-colors">Attraction Comparisons</a></li>
+          <li><a href="/subway-guide" class="hover:text-white transition-colors">Beijing Subway Guide</a></li>
+          <li><a href="/best-time" class="hover:text-white transition-colors">Best Time to Visit</a></li>
+          <li><a href="/faq" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-base-700 mt-12 pt-8 text-sm text-base-500 flex flex-col sm:flex-row justify-between gap-4">
+      <span>&copy; {year} China Attractions in Beijing</span>
+      <span>china-attractions-in-beijing.com</span>
+    </div>
+  </div>
+</footer>

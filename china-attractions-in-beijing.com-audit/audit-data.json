@@ -1,0 +1,177 @@
+{
+  "summary": {
+    "health_score": 48,
+    "business_type": "Travel/Tourism — Informational guide for international visitors to Beijing",
+    "top_findings": [
+      "No robots.txt or XML sitemap — zero crawl guidance for search engines",
+      "All 10 attraction images are SVG placeholders (dark rectangles with text), not real photos",
+      "No WebSite or Organization schema on homepage",
+      "Empty blog page linked from main navigation",
+      "No E-E-A-T authority signals: no author info, citations, or update dates on subpages"
+    ],
+    "quick_wins": [
+      "Create robots.txt pointing to sitemap",
+      "Install @astrojs/sitemap for automatic sitemap generation",
+      "Create branded OG image at /images/og-default.jpg",
+      "Add WebSite + Organization JSON-LD to BaseLayout",
+      "Add FAQPage schema to FAQ page"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 45,
+      "what_works": [
+        "Clean static site architecture with pre-rendered HTML",
+        "All pages have valid canonical URLs",
+        "Proper HTTP status codes (200/404) across all routes",
+        "SSL/HTTPS configured, no mixed content",
+        "Responsive viewport meta and charset declarations"
+      ],
+      "findings": [
+        {"title": "No robots.txt", "severity": "Critical", "description": "Site returns 404 for /robots.txt. Search engines have no crawl instructions or sitemap pointer.", "recommendation": "Create public/robots.txt allowing all crawlers and pointing to sitemap.xml."},
+        {"title": "No XML sitemap", "severity": "Critical", "description": "Site returns 404 for /sitemap.xml. Dynamic routes like /attractions/[slug] and /type/[type] may not be discovered.", "recommendation": "Install @astrojs/sitemap and configure in astro.config.mjs."},
+        {"title": "Empty /type/culture route", "severity": "High", "description": "The 'culture' type is defined but has zero attractions, creating a 302 redirect dead-end.", "recommendation": "Filter getStaticPaths to only generate pages for types with attractions."},
+        {"title": "Missing OG image", "severity": "High", "description": "All pages reference /images/og-default.jpg which does not exist on disk.", "recommendation": "Create a 1200x630px branded OG image."},
+        {"title": "HTML entities in titles", "severity": "Medium", "description": "Titles render &amp; instead of & in raw HTML source.", "recommendation": "Review Astro template literal encoding for title strings."},
+        {"title": "No custom 404 page", "severity": "Medium", "description": "404 responses return a basic dev error page.", "recommendation": "Create src/pages/404.astro with navigation links."},
+        {"title": "Inline CSS in dev mode", "severity": "Low", "description": "71KB CSS inlined per page in dev. Production extracts to separate file.", "recommendation": "Review Tailwind purge config to reduce production CSS."}
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 55,
+      "what_works": [
+        "Attraction descriptions are specific, informative, and show real domain knowledge",
+        "Homepage FAQ and pre-trip checklist are genuinely useful and not generic filler",
+        "Content is written in clear, fluent English for international travelers",
+        "Information density is good: ticket prices, subway exits, booking procedures"
+      ],
+      "findings": [
+        {"title": "Empty blog page", "severity": "High", "description": "The /blog page is a dead-end with only 'Coming soon' text but is linked from the main navigation.", "recommendation": "Publish 3-5 blog posts or remove the blog link until content is ready."},
+        {"title": "Thin About page", "severity": "High", "description": "About page has only 150 words with no author credentials or editorial process.", "recommendation": "Expand to include author expertise, methodology, and update policy."},
+        {"title": "No author attribution", "severity": "Medium", "description": "Zero E-E-A-T signals: no author names, credentials, or organizational transparency.", "recommendation": "Add author/editor bylines and Organization schema."},
+        {"title": "No external citations", "severity": "Medium", "description": "The entire site has zero external links. No references to UNESCO, official sites, or primary sources.", "recommendation": "Add 2-3 external citations per attraction page."},
+        {"title": "Boilerplate visitor tips", "severity": "Low", "description": "Three tip items on every attraction page are nearly identical.", "recommendation": "Make at least 1 tip per page attraction-specific."},
+        {"title": "Inflated attraction count", "severity": "Low", "description": "Homepage claims '50+ attractions' but only 10 are listed.", "recommendation": "Expand data or adjust homepage copy."}
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 65,
+      "what_works": [
+        "All pages have unique, keyword-rich title tags and meta descriptions",
+        "Clean, descriptive URLs with hyphens (e.g., /attractions/forbidden-city)",
+        "Strong internal linking: 57 links across 22 unique targets on homepage",
+        "H1 headings present on every page and match page topic"
+      ],
+      "findings": [
+        {"title": "Heading hierarchy gaps", "severity": "Medium", "description": "Multiple subpages jump from H1 to H4 with no H2/H3 section headings.", "recommendation": "Add H2 headings to break all pages into scannable content sections."},
+        {"title": "Missing breadcrumbs on subpages", "severity": "Medium", "description": "Only attraction detail pages have breadcrumb navigation.", "recommendation": "Add breadcrumbs to type, collection, and compare pages."},
+        {"title": "Non-functional mobile menu", "severity": "Medium", "description": "The hamburger button has no associated menu panel or JS toggle.", "recommendation": "Implement a working mobile navigation with all 4 nav links."},
+        {"title": "Inconsistent title conventions", "severity": "Low", "description": "Some titles include [2026] suffix, others do not.", "recommendation": "Standardize: either add year to all or remove from all."}
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 30,
+      "what_works": [
+        "Attraction detail pages have valid TouristAttraction JSON-LD",
+        "Schema includes name, description, address, and touristType",
+        "JSON-LD is well-formed on all 10 attraction pages"
+      ],
+      "findings": [
+        {"title": "No WebSite or Organization schema", "severity": "Critical", "description": "Homepage lacks the most fundamental schema types.", "recommendation": "Add WebSite + Organization JSON-LD to BaseLayout.astro."},
+        {"title": "Minimal TouristAttraction properties", "severity": "High", "description": "Only 4-5 properties used. Missing: image, url, geo, offers, openingHours.", "recommendation": "Expand schema to include all available attraction data."},
+        {"title": "No BreadcrumbList schema", "severity": "High", "description": "Visual breadcrumbs exist but no structured data.", "recommendation": "Generate BreadcrumbList JSON-LD on pages with breadcrumb navigation."},
+        {"title": "No FAQPage schema", "severity": "Medium", "description": "FAQ pages use details elements but lack FAQPage JSON-LD.", "recommendation": "Add FAQPage schema to FAQ page and homepage FAQ section."},
+        {"title": "No ItemList on list pages", "severity": "Medium", "description": "Type pages and collections page list attractions but lack ItemList schema.", "recommendation": "Add ItemList schema to listing pages."}
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 75,
+      "what_works": [
+        "Static site generation — zero client-side JavaScript required",
+        "No third-party scripts, analytics, or ad networks",
+        "Self-hosted fonts in modern woff2 format",
+        "CSS aspect-ratio containers prevent layout shift",
+        "Images use loading=lazy and decoding=async"
+      ],
+      "findings": [
+        {"title": "CSS bundle size", "severity": "Medium", "description": "Production CSS is 71KB. Tailwind purge likely leaving unused utilities.", "recommendation": "Review Tailwind content paths and purge configuration."},
+        {"title": "Font payload", "severity": "Medium", "description": "150KB of font files for Latin subfamily across 6 weights.", "recommendation": "Add font-display:swap and evaluate if all weights are needed."},
+        {"title": "No asset preloading", "severity": "Low", "description": "Critical fonts and hero image are not preloaded.", "recommendation": "Add link rel=preload for primary font files."}
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 25,
+      "what_works": [
+        "Content is structured in clear sections with descriptive headings",
+        "JSON-LD schema on attraction pages provides machine-readable data",
+        "All content is in static HTML — no JS-dependent information",
+        "Content demonstrates first-hand domain knowledge"
+      ],
+      "findings": [
+        {"title": "No llms.txt file", "severity": "High", "description": "Missing the emerging standard for LLM-friendly site summaries.", "recommendation": "Create public/llms.txt with site overview and key page links."},
+        {"title": "No E-E-A-T authority signals", "severity": "High", "description": "No author credentials, no citations, no organizational transparency.", "recommendation": "Add author info, external references, and update dates to every page."},
+        {"title": "Thin entity coverage", "severity": "Medium", "description": "Attraction pages lack hours, geo coordinates, accessibility, and nearby info that AI models extract.", "recommendation": "Expand entity data on all attraction pages."},
+        {"title": "No multilingual content", "severity": "Low", "description": "English-only despite Beijing attracting visitors from many language groups.", "recommendation": "Consider Chinese-language pages for the largest addressable audience."}
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 15,
+      "what_works": [
+        "Alt text is present on all images",
+        "Images use lazy loading and async decoding",
+        "Aspect-ratio containers prevent CLS"
+      ],
+      "findings": [
+        {"title": "All images are SVG placeholders", "severity": "Critical", "description": "Every attraction 'photo' is a dark rectangle with text — no real photographs anywhere.", "recommendation": "Replace all 10 images with real photographs (800x450px, WebP)."},
+        {"title": "File extension mismatch", "severity": "High", "description": "Files named .jpg contain SVG markup, which is technically invalid.", "recommendation": "Rename or replace files with correct extensions."},
+        {"title": "No responsive images", "severity": "Medium", "description": "Single src with no srcset — all viewports get the same 800x450 image.", "recommendation": "Add srcset or use Astro Image component."},
+        {"title": "Missing width/height attributes", "severity": "Medium", "description": "No explicit dimensions on img tags, which affects LCP scoring.", "recommendation": "Add width and height attributes to all images."}
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes", "timeframe": "Week 1", "items": [
+        "Create robots.txt with sitemap reference",
+        "Install @astrojs/sitemap for auto-generated sitemap",
+        "Fix /type/culture empty route",
+        "Replace all 10 SVG placeholder images with real photos",
+        "Create branded OG image (1200x630)",
+        "Add WebSite + Organization JSON-LD to BaseLayout"
+      ]},
+      {"name": "Phase 2: High-Impact Improvements", "timeframe": "Weeks 2-3", "items": [
+        "Expand About page with E-E-A-T content",
+        "Publish blog posts or remove blog from nav",
+        "Add external citations per attraction page",
+        "Add FAQPage, BreadcrumbList, and expanded schema",
+        "Fix heading hierarchy and add breadcrumbs on all pages",
+        "Implement working mobile navigation"
+      ]},
+      {"name": "Phase 3: Content & Authority", "timeframe": "Month 2", "items": [
+        "Create llms.txt for AI crawlers",
+        "Add update dates and author attribution to all pages",
+        "Expand attraction entities with hours, geo, accessibility",
+        "Expand to 50+ attractions or adjust homepage copy",
+        "Add ItemList and Article schema where applicable"
+      ]},
+      {"name": "Phase 4: Monitoring & Iteration", "timeframe": "Ongoing", "items": [
+        "Set up Google Search Console and GA4",
+        "Monitor Core Web Vitals monthly",
+        "Track AI citation growth",
+        "Regular ticket/subway info updates",
+        "Consider Chinese-language i18n pages"
+      ]}
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

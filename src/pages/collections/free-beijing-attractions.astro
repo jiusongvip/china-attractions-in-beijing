@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icons from "../../components/Icons.astro";
+import AttractionCard from "../../components/AttractionCard.astro";
+import { attractions } from "../../data/attractions";
+
+const free = attractions.filter((a) => a.freeEntry);
+---
+
+<BaseLayout title="Free Beijing Attractions: 7 Best Free Things to Do [2026]" description="Explore Beijing without spending a yuan. Free museums, historic squares, beautiful parks, and vibrant markets — the best things to do in Beijing at no cost.">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">Free Beijing Attractions</h1>
+    <p class="text-lg text-base-500 leading-relaxed max-w-2xl mb-8">World-class experiences that don't cost a yuan. Museums, squares, parks, and markets that are completely free.</p>
+  </div>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="max-w-3xl mb-12">
+      <p class="text-base text-base-600 leading-relaxed mb-4">One of Beijing's best-kept secrets is that some of its most impressive attractions are completely free. The world's largest public square, a museum that rivals the British Museum in scale, and ancient hutong neighborhoods dating to the Yuan Dynasty - all can be experienced without spending a single yuan on admission.</p>
+      <div class="border-l-4 border-accent pl-4 py-2 bg-accent-bg/30 rounded-r mb-6">
+        <p class="text-base text-base-700 leading-relaxed"><strong>Standout free experience:</strong> The National Museum of China. A world-class collection of 1.4 million artifacts spanning 5,000 years of Chinese civilization, housed in a soaring modern building on Tiananmen Square. The Ancient China exhibition alone is worth a half-day. Just remember to book your free reservation online at least three days ahead.</p>
+      </div>
+      <h2 class="text-xl font-semibold mb-3">What to Know About Free Attractions</h2>
+      <ul class="space-y-3 text-sm text-base-600 mb-6">
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">1.</span><span><strong>Free doesn't mean empty.</strong> Free attractions can be busy, especially on weekends and public holidays. Arrive early (before 9am) for the best experience.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">2.</span><span><strong>Bring your passport.</strong> Even free attractions often require passport verification for entry. The Forbidden City and National Museum both require advance reservations with passport details.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">3.</span><span><strong>Security checks are standard.</strong> Tiananmen Square and the National Museum have airport-style security. Pack light and expect to put your bags through X-ray scanners.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">4.</span><span><strong>Free + nearby paid = a perfect day.</strong> Combine Tiananmen Square (free) with the Forbidden City (paid), or the National Museum (free) with a walk through Qianmen Street. One free and one paid attraction per day is the sweet spot.</span></li>
+      </ul>
+      <h2 class="text-xl font-semibold mb-3">A Budget Day in Beijing</h2>
+      <p class="text-sm text-base-600 leading-relaxed mb-2">Here's a zero-admission-fee day that still hits three iconic sites:</p>
+      <ol class="space-y-2 text-sm text-base-600 list-decimal pl-5">
+        <li class="pl-1"><strong>Dawn:</strong> Flag-raising ceremony at Tiananmen Square (check sunrise time, arrive 45 minutes early for a good spot).</li>
+        <li class="pl-1"><strong>Morning:</strong> National Museum of China - focus on the Ancient China exhibition on B1.</li>
+        <li class="pl-1"><strong>Afternoon:</strong> Nanluoguxiang hutong - explore the side alleys, grab street snacks (budget ~CNY 30 for food).</li>
+      </ol>
+    </div>
+    <h2 class="text-2xl font-semibold tracking-tight mb-6">Free Attractions ({free.length})</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {free.map((a) => <AttractionCard attraction={a} />)}
+    </div>
+  </section>
+</BaseLayout>

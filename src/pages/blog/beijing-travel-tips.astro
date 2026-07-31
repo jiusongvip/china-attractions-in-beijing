@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icons from "../../components/Icons.astro";
+import { siteConfig } from "../../data/site";
+
+const title = "Beijing Travel Tips: 20 Things to Know Before You Go [2026]";
+const description = "Essential Beijing travel tips for first-time visitors: VPN setup, subway navigation, attraction booking, cultural etiquette, and practical advice that guidebooks skip.";
+const slug = "/blog/beijing-travel-tips/";
+const date = "2026-07-31";
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+    <header class="mb-10">
+      <p class="text-sm text-base-400 mb-2">Published {date}</p>
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">Beijing Travel Tips: 20 Things to Know Before You Go [2026]</h1>
+      <p class="text-lg text-base-500 leading-relaxed">Essential Beijing travel tips for first-time visitors: VPN setup, subway navigation, attraction booking, cultural etiquette, and practical advice that guidebooks skip.</p>
+    </header>
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "${title}",
+      "description": "${description}",
+      "datePublished": "${date}",
+      "author": { "@type": "Organization", "name": "${siteConfig.name}" },
+      "publisher": { "@type": "Organization", "name": "${siteConfig.name}", "url": "${siteConfig.url}" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "${siteConfig.url}${slug}" }
+    }`}></script>
+    <section class="mb-10">
+      <p class="text-base text-base-600 leading-relaxed mb-4">Beijing rewards travelers who come prepared. It&rsquo;s a huge city (22 million people across 16,800 square kilometers), and the gap between a good trip and a frustrating one often comes down to knowing what to expect. These 20 tips cover the practical stuff guidebooks skip &mdash; from how the subway really works to which apps you actually need on your phone.</p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-2">Before You Go</h2>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">1. Get a VPN before you leave home</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Google, Gmail, Instagram, WhatsApp, Facebook, and most Western social media are blocked in China. You need a VPN to access them. Download and test it <em>before</em> you arrive &mdash; VPN provider websites are also blocked inside China, so you can&rsquo;t install one after landing. ExpressVPN and Astrill have the best track records for reliability on Chinese networks. NordVPN and ProtonVPN often struggle. Pay for at least one month of service and confirm it&rsquo;s working before your flight.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">2. Install Alipay or WeChat for payments</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">China is nearly cashless. From street food carts to major museums, QR-code payments are the default. Alipay now supports international credit cards (Visa, Mastercard) and has an English interface. Download it before arriving, link your card, and verify your identity. WeChat Pay also works but requires more setup. Carry ¥200&ndash;300 in cash as backup, but you&rsquo;ll use it less than you expect.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">3. Book attraction tickets in advance</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">The Forbidden City, National Museum, and several other major attractions no longer sell tickets at the gate. You must reserve online, sometimes days in advance, with your passport number. For the <a href="/attractions/forbidden-city">Forbidden City</a>, reservations open 7 days ahead and sell out within hours during peak seasons. Book as early as possible through the official WeChat mini-programs or your hotel concierge.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">4. Carry your passport everywhere</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Chinese law requires foreigners to carry their passport at all times. You&rsquo;ll need it to enter attractions (even those you&rsquo;ve pre-booked), check into hotels, and occasionally for random security checks in subway stations. A photo on your phone is not sufficient. Keep the physical passport with you. A photocopy in your luggage is a good backup.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">5. Learn five Mandarin phrases</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">English is not widely spoken outside hotels and major attractions. Learning a handful of phrases goes far: <em>nǐ hǎo</em> (hello), <em>xiè xie</em> (thank you), <em>duì bu qǐ</em> (sorry/excuse me), <em>zhè ge</em> (this one, while pointing at a menu), and <em>duō shǎo qián?</em> (how much?). Download Pleco, the best Chinese-English dictionary app &mdash; it works offline and has optical character recognition that translates menus through your phone camera.</p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-2">Getting Around</h2>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">6. The subway is your best friend</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Beijing&rsquo;s subway is clean, safe, air-conditioned, and covers virtually every attraction. It&rsquo;s also extremely cheap &mdash; ¥3&ndash;9 per ride depending on distance. All signs and announcements are bilingual (Chinese/English). Rush hour (7:30&ndash;9am, 5:30&ndash;7pm) on Lines 1, 10, and 13 can be crushingly crowded &mdash; plan sightseeing outside these windows or accept the squeeze as part of the experience. For detailed routes to every attraction, see our <a href="/subway-guide">Beijing Subway Guide</a>.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">7. Get a transportation card or use Alipay for transit</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">The Yikatong card (¥20 deposit, refundable) works on all subways and buses. Buy it at any subway station service window. Alternatively, Alipay&rsquo;s Transport function now supports Beijing subway and bus QR payments with international cards &mdash; this is simpler if you already have Alipay set up.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">8. Ride-hailing: Didi is your only real option</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Uber doesn&rsquo;t operate in China. Didi is the dominant ride-hailing app and now has an English interface accessible through the Alipay app (look for the Didi Ride Hailing mini-program). Taxis are abundant but drivers rarely speak English &mdash; have your destination written in Chinese characters. Fares are reasonable: expect ¥30&ndash;60 for most trips within the central districts.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">9. Bikeshare: the best way to explore hutongs</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Blue (Hello), yellow (Meituan), and green (Didi) bikeshare bikes are everywhere. Scan the QR code with Alipay or WeChat to unlock. Rides cost ¥1.50 for 30 minutes. Biking through the hutong alleys of Dongcheng and Xicheng on a weekday morning, before the crowds arrive, is one of the best Beijing experiences. Stick to the narrow lanes; avoid major roads where cars and electric scooters can be chaotic.</p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-2">At the Attractions</h2>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">10. Arrive early &mdash; really early</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Tour buses start unloading at major attractions around 9:30am. If you arrive when gates open (usually 8am or 8:30am), you get 60&ndash;90 minutes of relative peace. This is especially critical for the <a href="/attractions/great-wall-badaling">Great Wall at Badaling</a>, which becomes a human river by 10am, and the <a href="/attractions/great-wall-mutianyu">Mutianyu section</a>, where the cable car line can hit 45 minutes by late morning. At the Forbidden City, early entry means you can photograph the empty courtyards before the tour-group flags appear.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">11. Monday is museum closure day</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Nearly all Beijing museums, including the Forbidden City (Palace Museum) and National Museum of China, are closed on Mondays. Plan your itinerary around this. Parks, temples, and the Great Wall remain open. Monday is a good day for outdoor attractions: the <a href="/attractions/summer-palace">Summer Palace</a>, <a href="/attractions/jingshan-park">Jingshan Park</a>, or a Great Wall trip.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">12. Bring your own toilet paper</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Public restrooms at tourist sites are generally clean but rarely stocked with toilet paper or soap. Carry a small pack of tissues and hand sanitizer. Western-style toilets are available at major international hotels and high-end malls; most public restrooms are squat toilets. At the Great Wall, restrooms are available at the entrance but not on the Wall itself.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">13. Expect security checks everywhere</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Bag X-ray and metal detectors are standard at subway stations, museums, Tiananmen Square, and major parks. They&rsquo;re quick (usually under 2 minutes) but constant. Travel light. Pocket knives, large scissors, and aerosol sprays will be confiscated at subway security. Tiananmen Square has the strictest checks &mdash; expect to show your passport.</p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-2">Weather and Seasons</h2>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">14. Spring and autumn are the sweet spots</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">April&ndash;May and September&ndash;October offer the best weather: comfortable temperatures (15&ndash;25°C), clear skies, and manageable crowds outside of Chinese holidays. Late October is the peak autumn foliage window, especially at the Great Wall and Fragrant Hills Park. For a full seasonal breakdown, see our <a href="/best-time">Best Time to Visit Beijing</a> guide.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">15. Avoid national holidays if you can</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">The first week of October (National Day Golden Week) and the first week of May (Labor Day) bring domestic tourism to a standstill. Attractions are packed beyond capacity, hotels triple in price, and train tickets sell out. Chinese New Year (late January/early February) is quieter &mdash; Beijing empties out as residents return to their hometowns &mdash; but many small restaurants close and some attractions run reduced hours. Check the lunar calendar before booking.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">16. Winter has a silver lining</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">December&ndash;February temperatures drop to -10°C (14°F), but crowds disappear and hotel prices drop 40&ndash;60%. The Forbidden City under snow is breathtaking, and you might have the Great Wall nearly to yourself. Frozen lakes in Shichahai become ice-skating rinks. Dress in layers, bring thermal underwear, and pack a warm hat &mdash; Beijing winter wind is biting. The payoff is a Beijing without crowds.</p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-2">Culture and Etiquette</h2>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">17. Queueing is... different</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">The Western concept of orderly lines doesn&rsquo;t always apply, especially at busy subway stations and food stalls. People push forward. Don&rsquo;t take it personally. Assert yourself politely but firmly &mdash; standing passively at the back of a loose crowd will mean you never get served. At the same time, aggressive shoving back is considered worse than the initial push. Find the balance between passive and aggressive.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">18. Tipping is not expected</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">There is no tipping culture in China. Restaurants, taxis, hotel staff, and tour guides do not expect tips. In high-end international hotels and very touristy restaurants, a service charge may be added to the bill &mdash; this replaces tipping. Leaving cash on the table will likely be chased after you by a confused waiter trying to return your change.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">19. Photographing people: ask first</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Beijingers are generally tolerant of photography, but pointing a camera at someone&rsquo;s face without permission is rude, same as anywhere. At temple fairs and in the hutongs, older residents in traditional dress are used to being photographed &mdash; a smile and a gesture toward your camera usually gets a nod or a wave. At temples, avoid photographing worshippers mid-prayer. Military installations and police stations: do not photograph them at all.</p>
+      <h3 class="text-lg font-medium text-base-800 mt-6 mb-2">20. Drinking water: don&rsquo;t drink from the tap</h3>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Tap water is not potable in Beijing. Hotels provide bottled water or electric kettles for boiling. Convenience stores sell 1.5L bottles for ¥2&ndash;3. Most restaurants serve boiled water or tea. Many Beijingers carry a thermos of hot water &mdash; it&rsquo;s a cultural habit, not just a safety precaution. If your hotel room has a kettle, boil water for 3 minutes and let it cool for drinking.</p>
+    </section>
+    <section class="border-t border-base-200 pt-8">
+      <h3 class="text-lg font-semibold mb-3">Related Guides</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="/subway-guide" class="text-accent hover:text-accent-light">Beijing Subway Guide: How to Reach Every Major Attraction</a></li>
+        <li><a href="/best-time" class="text-accent hover:text-accent-light">Best Time to Visit Beijing: Month-by-Month Guide</a></li>
+        <li><a href="/faq" class="text-accent hover:text-accent-light">Beijing Travel FAQ: Answers to Common Questions</a></li>
+        <li><a href="/collections/beijing-3-day-itinerary" class="text-accent hover:text-accent-light">3 Days in Beijing: The Perfect Itinerary</a></li>
+        <li><a href="/blog/where-to-stay-in-beijing" class="text-accent hover:text-accent-light">Where to Stay in Beijing: Best Areas for Tourists</a></li>
+      </ul>
+    </section>
+
+  </article>
+</BaseLayout>

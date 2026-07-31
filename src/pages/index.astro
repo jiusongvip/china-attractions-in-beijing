@@ -1,0 +1,372 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icons from "../components/Icons.astro";
+import AttractionCard from "../components/AttractionCard.astro";
+import { attractions, typeLabels } from "../data/attractions";
+
+const types = Object.keys(typeLabels);
+const pageTitle = "China Attractions in Beijing: Plan Your Trip [2026]";
+const pageDesc = "Plan your Beijing trip with confidence. Pre-trip checklist, attraction comparisons, subway directions, and curated itineraries — all in one guide.";
+
+function groupByType(list: typeof attractions) {
+  const groups: Record<string, typeof attractions> = {};
+  for (const a of list) {
+    if (!groups[a.type]) groups[a.type] = [];
+    groups[a.type].push(a);
+  }
+  return groups;
+}
+const grouped = groupByType(attractions);
+
+const top5Slugs = ["forbidden-city","great-wall-mutianyu","temple-of-heaven","summer-palace","lama-temple"];
+const top5 = attractions.filter((a) => top5Slugs.includes(a.slug));
+
+const checklist = [
+  { step: "1", text: "Check visa requirements for your nationality", detail: "Most visitors need an L tourist visa. 54 countries qualify for 144-hour transit without a visa when transiting to a third country.", link: "/faq", icon: "globe" },
+  { step: "2", text: "Book Forbidden City tickets in advance", detail: "Tickets sell out within minutes during peak season. Released 7 days ahead online. No on-site sales.", link: "/attractions/forbidden-city", icon: "ticket" },
+  { step: "3", text: "Download a translation app", detail: "Google Translate or Baidu Translate with offline packs. The subway has English signs, but restaurants and taxis rarely do.", link: null, icon: "search" },
+  { step: "4", text: "Buy a Yikatong card on arrival", detail: "Available at any subway station. Tap-and-go on subway, buses, and even some taxis.", link: "/subway-guide", icon: "train" },
+  { step: "5", text: "Pick the right season", detail: "Best: April-May and September-October. Avoid: first week of October (National Day) and Chinese New Year.", link: "/best-time", icon: "calendar" },
+  { step: "6", text: "Always carry your passport", detail: "Required for attraction entry, hotel check-in, and police checks. No photocopies — must be the original.", link: null, icon: "alert-triangle" },
+];
+
+const quickPicks = [
+  { label: "Best for First-Timers", href: "/collections/beijing-3-day-itinerary", icon: "map-pin" },
+  { label: "Best for Families", href: "/collections/beijing-with-kids", icon: "users" },
+  { label: "Best Free Attractions", href: "/collections/free-beijing-attractions", icon: "ticket" },
+  { label: "Best Photo Spots", href: "#categories", icon: "star" },
+];
+
+const nearbyPairs = [
+  { spots: ["Forbidden City", "Jingshan Park", "Nanluoguxiang"], note: "All walkable in one day. Finish with sunset from Jingshan (CNY 2 entry).", slug: "forbidden-city" },
+  { spots: ["Temple of Heaven", "Lama Temple", "Guijie Street"], note: "Morning culture, afternoon temple, evening food street.", slug: "temple-of-heaven" },
+  { spots: ["Mutianyu Great Wall", "City Return", "Peking Duck Dinner"], note: "Full-day trip. Book a driver (~CNY 600) or take Bus 916 Express.", slug: "great-wall-mutianyu" },
+];
+
+const faqs = [
+  { q: "How many days do I need to see Beijing's main attractions?", a: '3 to 4 days covers the essentials: Forbidden City, Great Wall, Temple of Heaven, and Summer Palace. See our <a href="/collections/beijing-3-day-itinerary" class="text-accent hover:underline">3-day itinerary</a> for a ready-made plan.' },
+  { q: "Do I need a visa to visit Beijing?", a: "Most foreign visitors need a Chinese tourist visa (L visa). Travelers from 54 countries qualify for 144-hour transit without visa when transiting to a third country. Always verify with your local Chinese embassy before travel." },
+  { q: "Mutianyu or Badaling — which Great Wall section should I visit?", a: 'Mutianyu is our recommendation for most visitors: fewer crowds and a fun toboggan slide. Badaling is the classic choice. See our <a href="/compare/badaling-vs-mutianyu" class="text-accent hover:underline">full comparison guide</a>.' },
+  { q: "How do I book tickets for the Forbidden City?", a: "Tickets are released online 7 days in advance and sell out within minutes during peak season. You must enter your passport number to book. One passport equals one ticket per day. No on-site ticket sales." },
+  { q: "Is it easy to get around Beijing without speaking Chinese?", a: "The subway has full English signage and announcements on all lines. Major attractions have English ticket machines and info boards. Download a translation app for restaurants and taxis." },
+  { q: "What should I do after visiting the Forbidden City?", a: "Climb Jingshan Park directly north for the best panoramic view of the palace rooftops (10-min walk, CNY 2). Then walk east to Nanluoguxiang hutong for boutique shopping and street food." },
+];
+
+const seasonMonths = [
+  { name: "Jan", quality: "cold" }, { name: "Feb", quality: "cold" },
+  { name: "Mar", quality: "shoulder" }, { name: "Apr", quality: "best" },
+  { name: "May", quality: "best" }, { name: "Jun", quality: "hot" },
+  { name: "Jul", quality: "hot" }, { name: "Aug", quality: "hot" },
+  { name: "Sep", quality: "best" }, { name: "Oct", quality: "best" },
+  { name: "Nov", quality: "shoulder" }, { name: "Dec", quality: "cold" },
+];
+
+const filterPills = [
+  { id: "all", label: "All" }, { id: "free", label: "Free" },
+  { id: "unesco", label: "UNESCO" }, { id: "halfday", label: "Half-day" },
+];
+
+function formatPrice(low: number, high: number) {
+  if (low === 0 && high === 0) return "Free";
+  if (low === high) return "CNY " + String(low);
+  return "CNY " + String(low) + "-" + String(high);
+}
+---
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How many days do I need to see Beijing\u0027s main attractions?","acceptedAnswer":{"@type":"Answer","text":"3 to 4 days covers the essentials: Forbidden City, Great Wall, Temple of Heaven, and Summer Palace."}},
+        {"@type":"Question","name":"Do I need a visa to visit Beijing?","acceptedAnswer":{"@type":"Answer","text":"Most foreign visitors need a Chinese tourist visa (L visa). Travelers from 54 countries qualify for 144-hour transit without visa."}},
+        {"@type":"Question","name":"Mutianyu or Badaling — which Great Wall section should I visit?","acceptedAnswer":{"@type":"Answer","text":"Mutianyu is our recommendation for most visitors: fewer crowds and a fun toboggan slide. Badaling is the classic choice."}},
+        {"@type":"Question","name":"How do I book tickets for the Forbidden City?","acceptedAnswer":{"@type":"Answer","text":"Tickets are released online 7 days in advance and sell out within minutes during peak season. One passport equals one ticket per day. No on-site sales."}},
+        {"@type":"Question","name":"Is it easy to get around Beijing without speaking Chinese?","acceptedAnswer":{"@type":"Answer","text":"The subway has full English signage and announcements on all lines. Download a translation app for restaurants and taxis."}},
+        {"@type":"Question","name":"What should I do after visiting the Forbidden City?","acceptedAnswer":{"@type":"Answer","text":"Climb Jingshan Park directly north for the best panoramic view of the palace rooftops. Then walk east to Nanluoguxiang hutong."}}
+      ]
+    }
+  </script>
+
+  <section class="relative bg-base-900 overflow-hidden">
+    <img src="/images/attractions/forbidden-city.webp" alt="Panoramic view of the Forbidden City golden rooftops, Beijing" class="absolute inset-0 w-full h-full object-cover opacity-45" width="1920" height="1080" />
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 md:pt-28 md:pb-20">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-xs font-medium text-emerald-300 uppercase tracking-wider">Updated July 2026</span>
+        <span class="text-white/30">·</span>
+        <span class="text-xs text-white/60">10 attractions &amp; growing</span>
+        <span class="text-white/30">·</span>
+        <span class="text-xs text-white/60">Independently researched</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
+        China Attractions<br class="sm:hidden" /> in Beijing
+      </h1>
+      <p class="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed mb-8">
+        Real ticket prices. Subway exit numbers. Honest comparisons.<br class="hidden sm:block" />
+        A travel guide built for actually planning your trip — not just reading about it.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#compare" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-colors">
+          <Icons name="search" size={18} />
+          Compare All Attractions
+        </a>
+        <a href="/collections/beijing-3-day-itinerary" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-colors">
+          <Icons name="calendar" size={18} />
+          3-Day Itinerary
+        </a>
+        <a href="#categories" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-colors">
+          <Icons name="map-pin" size={18} />
+          Browse by Category
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white border-b border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <div class="flex items-center gap-4 flex-wrap">
+        <span class="text-sm font-semibold text-base-900 shrink-0">Best time to visit:</span>
+        <div class="flex gap-1 flex-wrap">
+          {seasonMonths.map((m) => (
+            <span class={`text-xs font-medium px-2.5 py-1 rounded-full ${
+              m.quality === "best" ? "bg-emerald-100 text-emerald-800" :
+              m.quality === "shoulder" ? "bg-amber-50 text-amber-700" :
+              m.quality === "hot" ? "bg-orange-50 text-orange-700" :
+              "bg-base-100 text-base-500"
+            }`}>
+              {m.name}
+            </span>
+          ))}
+        </div>
+        <a href="/best-time" class="text-xs text-accent hover:text-accent-light font-medium ml-auto shrink-0">Full guide &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="border-b border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Compare All Attractions at a Glance</h2>
+      <p class="text-base-500 mb-3">Having trouble deciding? Compare by type, cost, duration, and subway. Click a row for the full guide.</p>
+      <div class="flex flex-wrap gap-2 mb-6" id="filter-pills">
+        {filterPills.map((pill) => (
+          <button type="button" data-filter={pill.id} class={`text-xs font-medium px-3 py-1.5 rounded-full border transition-colors ${
+              pill.id === "all" ? "bg-accent text-white border-accent" : "bg-white text-base-600 border-base-300 hover:border-accent/40 hover:text-accent"
+            }`}>
+            {pill.label}
+          </button>
+        ))}
+      </div>
+      <div class="overflow-x-auto border border-base-200 rounded-lg">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-base-100 text-base-500 uppercase text-xs tracking-wider">
+            <tr>
+              <th class="px-4 py-3 font-medium">Attraction</th>
+              <th class="px-4 py-3 font-medium">Type</th>
+              <th class="px-4 py-3 font-medium hidden sm:table-cell">Duration</th>
+              <th class="px-4 py-3 font-medium">Ticket</th>
+              <th class="px-4 py-3 font-medium hidden md:table-cell">Subway</th>
+              <th class="px-4 py-3 font-medium hidden lg:table-cell">Best Season</th>
+            </tr>
+          </thead>
+          <tbody id="compare-tbody">
+            {attractions.map((a) => (
+              <tr class="border-b border-base-200 hover:bg-accent-bg/30 transition-colors"
+                data-free={a.freeEntry ? "true" : "false"}
+                data-unesco={a.unesco ? "true" : "false"}
+                data-halfday={a.duration === "1-2 hours" || a.duration === "1-1.5 hours" ? "true" : "false"}>
+                <td class="px-4 py-3 font-medium text-base-900">
+                  <a href={`/attractions/${a.slug}`} class="hover:text-accent">{a.name}</a>
+                  {a.unesco && <span class="ml-2 text-xs text-amber-600 font-medium">UNESCO</span>}
+                </td>
+                <td class="px-4 py-3 text-base-500">{typeLabels[a.type]?.label || a.type}</td>
+                <td class="px-4 py-3 text-base-500 hidden sm:table-cell">{a.duration}</td>
+                <td class="px-4 py-3">
+                  {a.freeEntry ? <span class="text-emerald-700 font-medium text-xs">Free</span> : <span class="text-base-500 text-xs">{formatPrice(a.ticketLow, a.ticketHigh)}</span>}
+                </td>
+                <td class="px-4 py-3 text-base-500 hidden md:table-cell">{a.subway}</td>
+                <td class="px-4 py-3 text-base-500 hidden lg:table-cell">{a.bestSeason.map((s: string) => s.charAt(0).toUpperCase() + s.slice(1)).join(", ")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="before-you-go" class="border-b border-base-200 bg-base-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div class="mb-8">
+        <span class="text-xs font-medium text-accent uppercase tracking-wider">Why this guide is different</span>
+        <p class="text-sm text-base-500 mt-1 max-w-xl">We do not just list attractions. We tell you how to book, which subway exit to take, and what to do after. Updated monthly.</p>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Before You Go — Pre-Trip Checklist</h2>
+      <p class="text-base-500 mb-8">Six things every Beijing visitor should do before arriving. None of the big travel sites put this in one place.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {checklist.map((item, idx) => (
+          <div class={`card p-5 relative ${idx === 0 ? "sm:col-span-2" : ""}`}>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-accent-bg flex items-center justify-center shrink-0">
+                <Icons name={item.icon} size={18} class="text-accent" />
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-xs font-bold text-accent/60">{item.step}</span>
+                  {item.link ? <a href={item.link} class="text-sm font-semibold text-base-900 hover:text-accent transition-colors">{item.text} &rarr;</a> : <span class="text-sm font-semibold text-base-900">{item.text}</span>}
+                </div>
+                <p class="text-xs text-base-500 leading-relaxed">{item.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="combinations" class="border-b border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Plan Your Days — Connect Attractions</h2>
+      <p class="text-base-500 mb-10">Knowing which attractions to visit is step one. Knowing how to combine them into a smooth day is where the magic happens.</p>
+      <h3 class="text-lg font-semibold text-base-900 mb-6">Walkable Routes — Three Classic Days</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {nearbyPairs.map((pair) => (
+          <div class="card p-5">
+            <div class="flex items-center gap-2 mb-3 flex-wrap">
+              {pair.spots.map((spot, si) => (
+                <>{si > 0 && <Icons name="arrow-right" size={14} class="text-accent/40 shrink-0" />}
+                  <a href={si === 0 ? `/attractions/${pair.slug}` : "#combinations"} class="text-xs font-semibold text-base-900 hover:text-accent transition-colors">{spot}</a>
+                </>
+              ))}
+            </div>
+            <div class="flex items-start gap-2">
+              <Icons name="clock" size={14} class="text-base-400 shrink-0 mt-0.5" />
+              <p class="text-xs text-base-500 leading-relaxed">{pair.note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Top 5 Must-Sees in Beijing</h2>
+      <p class="text-base-500 mb-8">If you only have time for a handful, start here. These are the highest-rated, most iconic attractions in the city.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        {top5.map((a) => <AttractionCard attraction={a} />)}
+      </div>
+    </div>
+  </section>
+
+  <section id="categories" class="border-b border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Browse All Attractions by Category</h2>
+      <p class="text-base-500 mb-8">10 attractions, organized so you can find what matters. Click a category to expand.</p>
+      {Object.entries(grouped).map(([type, items], idx) => (
+        <details class="group border-b border-base-200" open={idx === 0}>
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none">
+            <div class="flex items-center gap-3">
+              <Icons name={typeLabels[type].icon} size={22} class="text-accent" />
+              <h3 class="text-lg font-semibold tracking-tight">{typeLabels[type].label}</h3>
+              <span class="text-sm text-base-400">({items.length})</span>
+            </div>
+            <Icons name="chevron-down" size={20} class="text-base-400 group-open:rotate-180 transition-transform shrink-0" />
+          </summary>
+          <div class="pb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {items.map((a) => <AttractionCard attraction={a} />)}
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section id="itineraries" class="border-b border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h3 class="text-lg font-semibold text-base-900 mb-4">Curated Multi-Day Itineraries</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="/collections/beijing-3-day-itinerary" class="card group block p-6">
+          <div class="flex items-center gap-2 mb-2"><span class="text-xs font-medium px-2 py-0.5 rounded bg-accent-bg text-accent">3 Days</span><span class="text-xs text-base-400">Classic</span></div>
+          <h3 class="font-semibold text-base-900 group-hover:text-accent transition-colors mb-2">First Time in Beijing</h3>
+          <p class="text-sm text-base-500 leading-relaxed">Forbidden City, Great Wall, Temple of Heaven — the essential plan.</p>
+        </a>
+        <a href="/collections/beijing-with-kids" class="card group block p-6">
+          <div class="flex items-center gap-2 mb-2"><span class="text-xs font-medium px-2 py-0.5 rounded bg-accent-bg text-accent">Family</span><span class="text-xs text-base-400">All ages</span></div>
+          <h3 class="font-semibold text-base-900 group-hover:text-accent transition-colors mb-2">Beijing with Kids</h3>
+          <p class="text-sm text-base-500 leading-relaxed">Pandas, toboggan rides, and parks that keep everyone happy.</p>
+        </a>
+        <a href="/collections/free-beijing-attractions" class="card group block p-6">
+          <div class="flex items-center gap-2 mb-2"><span class="text-xs font-medium px-2 py-0.5 rounded bg-green-50 text-green-700">Budget</span><span class="text-xs text-base-400">Free + cheap</span></div>
+          <h3 class="font-semibold text-base-900 group-hover:text-accent transition-colors mb-2">Beijing on a Budget</h3>
+          <p class="text-sm text-base-500 leading-relaxed">World-class experiences that do not cost a yuan.</p>
+        </a>
+        <a href="/best-time" class="card group block p-6">
+          <div class="flex items-center gap-2 mb-2"><span class="text-xs font-medium px-2 py-0.5 rounded bg-accent-bg text-accent">Seasonal</span><span class="text-xs text-base-400">Year-round</span></div>
+          <h3 class="font-semibold text-base-900 group-hover:text-accent transition-colors mb-2">Best Time to Visit</h3>
+          <p class="text-sm text-base-500 leading-relaxed">Month-by-month weather, crowds, and what to expect.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-base-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <a href="/collections/beijing-3-day-itinerary" class="block border-2 border-accent/20 rounded-xl p-5 md:p-6 bg-accent-bg/30 hover:bg-accent-bg/50 hover:border-accent/40 transition-all group">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent text-white uppercase tracking-wider">Start Here</span>
+              <span class="text-xs text-base-400">For 70% of visitors</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-semibold text-base-900 group-hover:text-accent transition-colors">First time in Beijing? Start with our 3-Day Classic Itinerary</h2>
+            <p class="text-sm text-base-500 mt-1">Forbidden City, Great Wall, Temple of Heaven — the essential plan, day by day.</p>
+          </div>
+          <Icons name="arrow-right" size={24} class="text-accent shrink-0 group-hover:translate-x-1 transition-transform hidden sm:block" />
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Quick Picks — Find What You Need</h2>
+      <p class="text-base-500 mb-8">Not sure where to start? These shortcuts get you to the right list fast.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {quickPicks.map((pick) => (
+          <a href={pick.href} class="card group block p-4 text-center hover:border-accent/30">
+            <Icons name={pick.icon} size={24} class="text-accent mx-auto mb-2" />
+            <span class="text-sm font-medium text-base-900 group-hover:text-accent transition-colors">{pick.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="border-t border-base-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">What Travelers Ask Most</h2>
+      <p class="text-base-500 mb-8">Real questions from real visitors. Answers that go deeper than the usual travel site FAQ.</p>
+      <div class="space-y-1">
+        {faqs.map((faq) => (
+          <details class="group border-b border-base-200">
+            <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
+              <span class="text-base font-medium text-base-900 pr-4 group-hover:text-accent transition-colors">{faq.q}</span>
+              <Icons name="chevron-down" size={18} class="text-base-400 group-open:rotate-180 transition-transform shrink-0" />
+            </summary>
+            <div class="pb-4 text-sm text-base-600 leading-relaxed" set:html={faq.a}></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      var pills = document.querySelectorAll("#filter-pills button");
+      var rows = document.querySelectorAll("#compare-tbody tr");
+      var active = "all";
+      function apply() { rows.forEach(function(row) { if (active === "all") { row.style.display = ""; return; } row.style.display = row.getAttribute("data-" + active) === "true" ? "" : "none"; }); }
+      pills.forEach(function(btn) { btn.addEventListener("click", function() { active = btn.getAttribute("data-filter") || "all"; pills.forEach(function(b) { b.className = b === btn ? "text-xs font-medium px-3 py-1.5 rounded-full border transition-colors bg-accent text-white border-accent" : "text-xs font-medium px-3 py-1.5 rounded-full border transition-colors bg-white text-base-600 border-base-300 hover:border-accent/40 hover:text-accent"; }); apply(); }); });
+    })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AttractionCard from "../../components/AttractionCard.astro";
+import { getAttractionsByType, typeLabels, typeIntros } from "../../data/attractions";
+
+export function getStaticPaths() {
+  return Object.keys(typeLabels).filter((type) => getAttractionsByType(type).length > 0).map((type) => ({ params: { type } }));
+}
+
+const { type } = Astro.params;
+const label = typeLabels[type as string];
+const items = getAttractionsByType(type as string);
+if (!label || items.length === 0) return Astro.redirect("/404");
+
+const pageTitle = label.label + " in Beijing: What to Know [2026]";
+const pageDesc = label.label + " in Beijing — ticket prices, opening hours, subway directions, and practical tips for international travelers visiting in 2026.";
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">{label.label} in Beijing</h1>
+    <p class="text-lg text-base-500 leading-relaxed mb-4">{items.length} attraction{items.length > 1 ? "s" : ""} in this category</p>
+    {typeIntros[type as string] && <p class="text-base text-base-600 leading-relaxed max-w-3xl mb-8">{typeIntros[type as string]}</p>}
+  </div>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {items.map((a) => <AttractionCard attraction={a} />)}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import Icons from "./Icons.astro";
+import type { Attraction } from "../data/attractions";
+
+const { attraction } = Astro.props as { attraction: Attraction };
+const formatPrice = (low: number, high: number) => {
+  if (low === 0 && high === 0) return "Free";
+  if (low === high) return `CNY ${low}`;
+  return `CNY ${low}-CNY ${high}`;
+};
+---
+
+<a href={`/attractions/${attraction.slug}`} class="card group block">
+  <div class="aspect-[16/9] bg-base-100 relative overflow-hidden">
+    <img
+      src={`/images/attractions/${attraction.slug}.webp`}
+      alt={attraction.name}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+    {attraction.unesco && (
+      <span class="absolute top-3 left-3 px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">UNESCO</span>
+    )}
+    {attraction.freeEntry && (
+      <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-xs font-medium bg-accent-bg text-accent">Free Entry</span>
+    )}
+  </div>
+  <div class="p-4">
+    <h3 class="text-base font-semibold text-base-900 mb-1 group-hover:text-accent transition-colors">
+      {attraction.name}
+    </h3>
+    <p class="text-sm text-base-500 line-clamp-2 leading-relaxed mb-3">
+      {attraction.description.slice(0, 120)}...
+    </p>
+    <div class="flex items-center gap-4 text-xs text-base-500">
+      <span class="flex items-center gap-1"><Icons name="star" size={14} class="text-amber-500" />{attraction.rating}</span>
+      <span class="flex items-center gap-1"><Icons name="clock" size={14} />{attraction.duration}</span>
+      <span class="flex items-center gap-1"><Icons name="ticket" size={14} />{formatPrice(attraction.ticketLow, attraction.ticketHigh)}</span>
+    </div>
+  </div>
+</a>

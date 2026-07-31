@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="80" y="80" width="8" height="470" fill="#34D399" rx="4"/>
+  <text x="120" y="260" font-family="Geist, sans-serif" font-size="52" font-weight="700" fill="white">China Attractions</text>
+  <text x="120" y="330" font-family="Geist, sans-serif" font-size="52" font-weight="700" fill="#34D399">in Beijing</text>
+  <text x="120" y="410" font-family="Geist, sans-serif" font-size="24" fill="#A7F3D0">Complete 2026 guide · Ticket prices · Subway directions · Insider tips</text>
+  <!-- Great Wall icon -->
+  <path d="M820,280 L870,220 L920,240 L970,190 L1020,210 L1070,170 L1100,190" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+</svg>

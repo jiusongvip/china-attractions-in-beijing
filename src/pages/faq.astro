@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icons from "../components/Icons.astro";
+
+const faqs = [
+  { q: "How many days do I need to see Beijing's main attractions?", a: "3 to 4 days covers the essential sights: Forbidden City, Great Wall, Temple of Heaven, and Summer Palace. With 5 to 7 days, you can add museums, hutongs, and day trips at a relaxed pace." },
+  { q: "What is the best time to visit Beijing?", a: "Spring (April to May) and autumn (September to October) offer the most comfortable weather with clear skies and mild temperatures. Spring has cherry blossoms, autumn has golden foliage. Summer is hot and humid. Winter is cold but less crowded." },
+  { q: "Do I need a visa to visit Beijing?", a: "Most foreign visitors need a Chinese tourist visa (L visa). The 144-hour transit visa-free policy applies to travelers from 54 countries transiting through Beijing to a third country. Always check with your local Chinese embassy for the latest requirements." },
+  { q: "How do I use the Beijing subway?", a: "The Beijing subway is extensive, clean, affordable (CNY 3 to 9 per ride), and has English signage and announcements. Purchase a Yikatong card at any station for convenient tap-and-go travel. Most major attractions are within a 10-minute walk from a subway station." },
+  { q: "Should I book tickets in advance?", a: "Yes, strongly recommended. The Forbidden City requires online reservations, often weeks ahead in peak season. The National Museum also requires advance booking. Most other attractions can be purchased on the day, but online booking saves queue time." },
+  { q: "Is Beijing safe for tourists?", a: "Yes, Beijing is very safe for tourists with low violent crime rates. Watch for pickpockets in crowded tourist areas and be aware of common tourist scams around major sights like the tea ceremony scam and art student scam." },
+  { q: "What should I pack for Beijing?", a: "Comfortable walking shoes are essential. Bring layers for spring and autumn. In summer, pack light clothing plus sun protection. In winter, bring a warm coat, gloves, and hat. Always carry your passport." },
+  { q: "Can I use English in Beijing?", a: "English is not widely spoken outside major hotels and tourist attractions. Download a translation app. Major subway stations and attractions have English signage. It helps to have the names of destinations written in Chinese characters." },
+  { q: "What is the currency in Beijing?", a: "The Chinese Yuan (CNY or RMB). Mobile payment via WeChat Pay and Alipay is ubiquitous. Cash is less commonly used but still accepted. International credit cards work at major hotels and large restaurants." },
+];
+---
+
+<BaseLayout title="Beijing Travel FAQ: Visa, Subway, Tickets & More [2026]" description="Frequently asked questions about visiting Beijing. Visa requirements, subway guide, ticket booking, safety, weather, and practical travel tips.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">Frequently Asked Questions</h1>
+    <p class="text-lg text-base-500 leading-relaxed mb-8">Everything you need to know before visiting Beijing's attractions.</p>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity": faqs.map((f: { q: string; a: string }) => ({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))
+  })}></script>
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="space-y-1">
+      {faqs.map((faq) => (
+        <details class="group border-b border-base-200">
+          <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
+            <span class="text-base font-medium text-base-900 pr-4">{faq.q}</span>
+            <Icons name="chevron-down" size={18} class="text-base-400 group-open:rotate-180 transition-transform shrink-0" />
+          </summary>
+          <p class="pb-4 text-sm text-base-600 leading-relaxed">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How many days do I need to see Beijing's main attractions?", "acceptedAnswer": { "@type": "Answer", "text": "3 to 4 days covers the essential sights: Forbidden City, Great Wall, Temple of Heaven, and Summer Palace. With 5 to 7 days, you can add museums, hutongs, and day trips at a relaxed pace." } },
+    { "@type": "Question", "name": "What is the best time to visit Beijing?", "acceptedAnswer": { "@type": "Answer", "text": "Spring (April to May) and autumn (September to October) offer the most comfortable weather with clear skies and mild temperatures. Spring has cherry blossoms, autumn has golden foliage. Summer is hot and humid. Winter is cold but less crowded." } },
+    { "@type": "Question", "name": "Do I need a visa to visit Beijing?", "acceptedAnswer": { "@type": "Answer", "text": "Most foreign visitors need a Chinese tourist visa (L visa). The 144-hour transit visa-free policy applies to travelers from 54 countries transiting through Beijing to a third country. Always check with your local Chinese embassy for the latest requirements." } },
+    { "@type": "Question", "name": "How do I use the Beijing subway?", "acceptedAnswer": { "@type": "Answer", "text": "The Beijing subway is extensive, clean, affordable (CNY 3 to 9 per ride), and has English signage and announcements. Purchase a Yikatong card at any station for convenient tap-and-go travel. Most major attractions are within a 10-minute walk from a subway station." } },
+    { "@type": "Question", "name": "Should I book tickets in advance?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, strongly recommended. The Forbidden City requires online reservations, often weeks ahead in peak season. The National Museum also requires advance booking. Most other attractions can be purchased on the day, but online booking saves queue time." } },
+    { "@type": "Question", "name": "Is Beijing safe for tourists?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Beijing is very safe for tourists with low violent crime rates. Watch for pickpockets in crowded tourist areas and be aware of common tourist scams around major sights like the tea ceremony scam and art student scam." } },
+    { "@type": "Question", "name": "What should I pack for Beijing?", "acceptedAnswer": { "@type": "Answer", "text": "Comfortable walking shoes are essential. Bring layers for spring and autumn. In summer, pack light clothing plus sun protection. In winter, bring a warm coat, gloves, and hat. Always carry your passport." } },
+    { "@type": "Question", "name": "Can I use English in Beijing?", "acceptedAnswer": { "@type": "Answer", "text": "English is not widely spoken outside major hotels and tourist attractions. Download a translation app. Major subway stations and attractions have English signage. It helps to have the names of destinations written in Chinese characters." } },
+    { "@type": "Question", "name": "What is the currency in Beijing?", "acceptedAnswer": { "@type": "Answer", "text": "The Chinese Yuan (CNY or RMB). Mobile payment via WeChat Pay and Alipay is ubiquitous. Cash is less commonly used but still accepted. International credit cards work at major hotels and large restaurants." } }
+  ]
+})}></script>
+</BaseLayout>
