@@ -35,6 +35,8 @@ const quickPicks = [
   { label: "Best for Families", href: "/collections/beijing-with-kids", icon: "users" },
   { label: "Best Free Attractions", href: "/collections/free-beijing-attractions", icon: "ticket" },
   { label: "Best Photo Spots", href: "#categories", icon: "star" },
+  { label: "What to Eat", href: "#food", icon: "bowl" },
+  { label: "Where to Stay", href: "#stay", icon: "bed" },
 ];
 
 const nearbyPairs = [
@@ -50,6 +52,22 @@ const faqs = [
   { q: "How do I book tickets for the Forbidden City?", a: "Tickets are released online 7 days in advance and sell out within minutes during peak season. You must enter your passport number to book. One passport equals one ticket per day. No on-site ticket sales." },
   { q: "Is it easy to get around Beijing without speaking Chinese?", a: "The subway has full English signage and announcements on all lines. Major attractions have English ticket machines and info boards. Download a translation app for restaurants and taxis." },
   { q: "What should I do after visiting the Forbidden City?", a: "Climb Jingshan Park directly north for the best panoramic view of the palace rooftops (10-min walk, CNY 2). Then walk east to Nanluoguxiang hutong for boutique shopping and street food." },
+];
+
+const foodItems = [
+  { name: "Peking Duck", slug: "peking-duck", desc: "Beijing's most famous dish — crispy skin, thin pancakes, hoisin sauce. A tableside carving ritual that's as much performance as meal.", icon: "star", recs: ["Siji Minfu (Dengshikou)", "Dadong Roast Duck (Tiantan)", "Country Kitchen"] },
+  { name: "Beijing Hotpot", slug: "beijing-hotpot", desc: "Copper chimney pot with clear broth. Thinly shaved mutton swished in goji-berry soup — subtle, not spicy. Very different from Sichuan style.", icon: "ticket", recs: ["Jing Men Jiu Shuan (Wangfujing)", "Dong Lai Shun (Qianmen)", "Haidilao (multiple locations)"] },
+  { name: "Dumplings & Noodles", slug: "dumplings-noodles", desc: "From zhajiangmian (soybean paste noodles) to hand-pulled lamian and boiled jiaozi — Beijing's everyday comfort food is cheap, fast, and everywhere.", icon: "heart", recs: ["Mr Shi's Dumplings (Gulou)", "Yin San Douzhi (Qianmen)", "Huguosi Snacks (Xicheng)"] },
+  { name: "Street Food", slug: "street-food", desc: "Jianbing (savory crepes), tanghulu (candied hawthorn), and lamb skewers from sidewalk grills. The best bites come from carts with the longest local lines.", icon: "shopping-bag", recs: ["Guijie Street (Dongzhimen)", "Nanluoguxiang stalls", "Qianmen Food Street"] },
+  { name: "Teahouses", slug: "teahouses", desc: "More than just tea — it's a cultural ritual. Sample jasmine, pu'er, and oolong while watching opera arias or calligraphy demos in a century-old courtyard.", icon: "clock", recs: ["Lao She Teahouse (Qianmen)", "Sentosa Teahouse", "Maliandao Tea Street"] },
+  { name: "Food Tours", slug: "food-tours", desc: "Join a small-group hutong walking tour. Taste 10+ dishes across hidden courtyard restaurants, craft breweries, and family-run stalls — with a guide who knows the stories.", icon: "users", recs: ["Hutong food walks (3 hrs)", "Night market crawls", "Private guided tours"] },
+];
+
+const stayAreas = [
+  { name: "Dongcheng District", slug: "dongcheng", desc: "Historic heart of Beijing. Walk to the Forbidden City, Tiananmen Square, and Wangfujing. Best for first-timers who want maximum sights within walking distance.", icon: "building-castle", pros: ["Walking distance to top sights", "Best subway connections", "Mix of luxury & budget"] },
+  { name: "Hutong / Gulou Area", slug: "hutong-gulou", desc: "Traditional courtyard neighborhoods near the Drum & Bell Towers. Boutique guesthouses in converted siheyuan. Wake up to old men playing chess and the smell of jianbing.", icon: "temple", pros: ["Most authentic Beijing vibe", "Unique courtyard hotels", "Great street food at your door"] },
+  { name: "Chaoyang / Sanlitun", slug: "chaoyang-sanlitun", desc: "Modern Beijing — international hotels, rooftop bars, embassy district dining. The go-to for nightlife, Western comfort, and business-travel convenience.", icon: "star", pros: ["Best nightlife & dining", "International hotel chains", "Embassy district = English-friendly"] },
+  { name: "Wangfujing", slug: "wangfujing", desc: "Beijing's shopping boulevard meets central convenience. Department stores, the night market, and a short walk to the Forbidden City. Great for shoppers and families.", icon: "shopping-bag", pros: ["Shopping hub", "10-min walk to Forbidden City", "Family-friendly hotels"] },
 ];
 
 const seasonMonths = [
@@ -337,6 +355,62 @@ function formatPrice(low: number, high: number) {
             <Icons name={pick.icon} size={24} class="text-accent mx-auto mb-2" />
             <span class="text-sm font-medium text-base-900 group-hover:text-accent transition-colors">{pick.label}</span>
           </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="food" class="border-t border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div class="flex items-center gap-3 mb-2">
+        <Icons name="bowl" size={26} class="text-accent" />
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">What to Eat in Beijing</h2>
+      </div>
+      <p class="text-base-500 mb-8">Beijing's food scene is reason enough to visit. From imperial banquet dishes to street-corner snacks, here's what you shouldn't miss — and where to find it.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {foodItems.map((item) => (
+          <div class="card p-5 flex flex-col">
+            <div class="flex items-center gap-2 mb-2">
+              <Icons name={item.icon} size={16} class="text-accent shrink-0" />
+              <h3 class="font-semibold text-base-900">{item.name}</h3>
+            </div>
+            <p class="text-sm text-base-500 leading-relaxed mb-3 flex-1">{item.desc}</p>
+            <div class="text-xs text-base-400">
+              <span class="font-medium text-base-500">Where to try:</span>
+              <ul class="mt-1 space-y-0.5">
+                {item.recs.map((rec) => (
+                  <li class="before:content-['—'] before:mr-1.5 before:text-base-300">{rec}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="stay" class="border-t border-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div class="flex items-center gap-3 mb-2">
+        <Icons name="bed" size={26} class="text-accent" />
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Where to Stay in Beijing</h2>
+      </div>
+      <p class="text-base-500 mb-2">Pick the right neighborhood and your trip gets twice as easy. Each area has a distinct personality — here's how to choose.</p>
+      <p class="text-xs text-base-400 mb-8">Rule #1: stay within 10 minutes' walk of a subway station. It'll save you hours.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {stayAreas.map((area) => (
+          <div class="card p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <Icons name={area.icon} size={18} class="text-accent shrink-0" />
+              <h3 class="font-semibold text-base-900">{area.name}</h3>
+            </div>
+            <p class="text-sm text-base-500 leading-relaxed mb-3">{area.desc}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {area.pros.map((pro) => (
+                <span class="text-xs bg-accent-bg text-accent px-2 py-0.5 rounded-full font-medium">{pro}</span>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </div>
