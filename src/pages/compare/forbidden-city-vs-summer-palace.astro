@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 ---
 
 <BaseLayout title="Forbidden City vs Summer Palace: Which Should You Visit?" description="Forbidden City or Summer Palace? Compare history, scale, crowds, time needed, and the experience of each of Beijing's two great imperial sites. Honest verdict for every traveler type.">
-  <div class="relative py-24 md:py-32 overflow-hidden">
+  <Breadcrumb items={[{ label: "Compare", href: "/#compare-guides" }, { label: "Forbidden City vs Summer Palace" }]} />
+  <div class="relative py-24 md:py-32 overflow-hidden -mt-[68px]">
     <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/attractions/summer-palace.webp')"></div>
     <div class="absolute inset-0 bg-[#0a3b36]/88"></div>
     <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">

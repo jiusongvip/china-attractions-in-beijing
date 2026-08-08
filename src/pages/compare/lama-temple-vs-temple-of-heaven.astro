@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 ---
 
 <BaseLayout title="Lama Temple vs Temple of Heaven: Which Should You Visit?" description="Lama Temple or Temple of Heaven? Compare the two spiritual landmarks — atmosphere, architecture, rituals, and time needed. Honest verdict on which one fits your Beijing itinerary.">
-  <div class="relative py-24 md:py-32 overflow-hidden">
+  <Breadcrumb items={[{ label: "Compare", href: "/#compare-guides" }, { label: "Lama Temple vs Temple of Heaven" }]} />
+  <div class="relative py-24 md:py-32 overflow-hidden -mt-[68px]">
     <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/attractions/lama-temple.webp')"></div>
     <div class="absolute inset-0 bg-[#0a3b36]/88"></div>
     <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">

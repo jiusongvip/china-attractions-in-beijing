@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import AttractionCard from "../../components/AttractionCard.astro";
 import { getAttractionsByType, typeLabels, typeIntros } from "../../data/attractions";
 
@@ -17,7 +18,8 @@ const pageDesc = label.label + " in Beijing — ticket prices, opening hours, su
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+  <Breadcrumb items={[{ label: "Attractions", href: "/#must-do" }, { label: label.label }]} />
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
     <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">{label.label} in Beijing</h1>
     <p class="text-lg text-base-500 leading-relaxed mb-4">{items.length} attraction{items.length > 1 ? "s" : ""} in this category</p>
     {typeIntros[type as string] && <p class="text-base text-base-600 leading-relaxed max-w-3xl mb-8">{typeIntros[type as string]}</p>}

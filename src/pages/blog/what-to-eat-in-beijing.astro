@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { siteConfig } from "../../data/site";
 
 const title = "What to Eat in Beijing: 15 Must-Try Dishes and Where to Find Them [2026]";
@@ -10,7 +11,8 @@ const date = "2026-07-31";
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+  <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "What to Eat in Beijing" }]} />
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
     <header class="mb-10">
       <p class="text-sm text-base-400 mb-2">Published {date}</p>
       <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">What to Eat in Beijing: 15 Must-Try Dishes and Where to Find Them [2026]</h1>
@@ -26,17 +28,32 @@ const date = "2026-07-31";
       "publisher": { "@type": "Organization", "name": "${siteConfig.name}", "url": "${siteConfig.url}" },
       "mainEntityOfPage": { "@type": "WebPage", "@id": "${siteConfig.url}${slug}" }
     }`}></script>
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "${siteConfig.url}/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "${siteConfig.url}/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "What to Eat in Beijing" }
+      ]
+    }`}></script>
     <section class="mb-10">
       <p class="text-base text-base-600 leading-relaxed mb-4">Beijing&rsquo;s food scene is one of the richest in the world &mdash; shaped by imperial banquets, Silk Road trade, and centuries of street-food tradition. This guide covers 15 essential dishes and snacks, from the obvious (Peking duck) to the deeply local (fermented bean juice), with specific restaurants where you can find each one done right.</p>
       <p class="text-base text-base-600 leading-relaxed mb-4">Most first-time visitors underestimate how much Beijing has to offer beyond roast duck. The city is a breakfast capital (dozens of savory crepe and pancake variations), the birthplace of Mongolian hotpot as we know it, and home to a rich Islamic Chinese culinary tradition in the Niujie (Ox Street) neighborhood. Here&rsquo;s where to start.</p>
     </section>
     <section class="mb-10">
       <h2 class="text-2xl font-semibold tracking-tight mb-2">1. Peking Duck (北京烤鸭 Běijīng Kǎoyā)</h2>
+      <div class="rounded-2xl overflow-hidden border border-base-200 shadow-sm mb-4">
+        <img src="/images/food/peking-duck.webp" alt="Peking duck carved tableside with pancakes, sweet bean sauce, and scallions" width="1200" height="798" loading="lazy" decoding="async" class="w-full h-auto object-cover" />
+      </div>
       <p class="text-sm text-base-600 mb-4 leading-relaxed">The undisputed icon of Beijing cuisine. A whole duck is air-dried, glazed with maltose, and roasted in a wood-fired oven until the skin is paper-thin and crackling-crisp. It&rsquo;s carved tableside and served with thin pancakes, sweet bean sauce, cucumber, and scallions. The skin is the star &mdash; dip it in sugar for the traditional first bite.</p>
       <p class="text-sm text-base-600 mb-4 leading-relaxed"><strong>Where to go:</strong> <em>Siji Minfu</em> (multiple locations, Dengshikou flagship is closest to the Forbidden City) is the locals&rsquo; pick &mdash; half the price of touristy Quanjude, twice the quality. <em>Dadong</em> (Tiantan Road location near the Temple of Heaven) does a refined, less fatty version with artistic presentation. Budget: <em>Li Qun Roast Duck</em> in a hutong courtyard near Qianmen, where ducks are roasted in a traditional brick oven.</p>
     </section>
     <section class="mb-10">
       <h2 class="text-2xl font-semibold tracking-tight mb-2">2. Zhajiangmian (炸酱面 Zhájiàngmiàn)</h2>
+      <div class="rounded-2xl overflow-hidden border border-base-200 shadow-sm mb-4">
+        <img src="/images/food/zhajiangmian.webp" alt="Zhajiangmian — thick wheat noodles topped with fermented soybean paste, pork, and fresh shredded vegetables" width="1200" height="798" loading="lazy" decoding="async" class="w-full h-auto object-cover" />
+      </div>
       <p class="text-sm text-base-600 mb-4 leading-relaxed">Beijing&rsquo;s quintessential comfort food: thick wheat noodles topped with a rich, salty fermented soybean paste stir-fried with diced pork belly and served with a rainbow of fresh shredded vegetables (cucumber, radish, soybean sprouts). You mix everything at the table and eat it with raw garlic on the side. It&rsquo;s a ¥15&ndash;25 meal that fills you for hours.</p>
       <p class="text-sm text-base-600 mb-4 leading-relaxed"><strong>Where to go:</strong> <em>Haiwanju</em> on Zengguang Road in Haidian is the definitive version &mdash; the noodle-pulling happens in the front window. In Dongcheng, the zhajiangmian at <em>Old Beijing Zhajiangmian King</em> near the Lama Temple is a reliable introduction.</p>
     </section>
@@ -57,11 +74,17 @@ const date = "2026-07-31";
     </section>
     <section class="mb-10">
       <h2 class="text-2xl font-semibold tracking-tight mb-2">6. Donkey Burger (驴肉火烧 Lǚ ròu Huǒshāo)</h2>
+      <div class="rounded-2xl overflow-hidden border border-base-200 shadow-sm mb-4">
+        <img src="/images/food/donkey-burger.webp" alt="Donkey burger — shredded braised donkey meat stuffed into a crisp flaky flatbread" width="1200" height="798" loading="lazy" decoding="async" class="w-full h-auto object-cover" />
+      </div>
       <p class="text-sm text-base-600 mb-4 leading-relaxed">Shredded braised donkey meat stuffed into a crisp, flaky flatbread &mdash; think of it as Beijing&rsquo;s answer to a pulled pork sandwich. The meat is lean, slightly gamey, and surprisingly tender. There&rsquo;s a local saying: &ldquo;In heaven there is dragon meat, on earth there is donkey meat.&rdquo;</p>
       <p class="text-sm text-base-600 mb-4 leading-relaxed"><strong>Where to go:</strong> <em>Wang Pangzi</em> (Fatty Wang) has multiple locations and is the most famous chain. The original shop near Gulou Dajie is a tiny takeout window &mdash; order the &ldquo;chun lürou&rdquo; (pure donkey meat) version for ¥12&ndash;15. Eat it standing on the sidewalk like a local.</p>
     </section>
     <section class="mb-10">
       <h2 class="text-2xl font-semibold tracking-tight mb-2">7. Candied Hawthorn (冰糖葫芦 Bīngtáng Húlu)</h2>
+      <div class="rounded-2xl overflow-hidden border border-base-200 shadow-sm mb-4">
+        <img src="/images/food/tanghulu.webp" alt="Tanghulu — skewered hawthorn berries coated in a crisp glassy sugar shell" width="1200" height="798" loading="lazy" decoding="async" class="w-full h-auto object-cover" />
+      </div>
       <p class="text-sm text-base-600 mb-4 leading-relaxed">The iconic Beijing street snack: skewered hawthorn berries dipped in hardened sugar that cracks when you bite. The tartness of the hawthorn against the glassy sugar shell creates an addictive sweet-sour contrast. In winter, you&rsquo;ll see vendors carrying tall foam cylinders bristling with these skewers on every major street. Modern variations use strawberries or grapes, but the classic hawthorn is the one to try.</p>
       <p class="text-sm text-base-600 mb-4 leading-relaxed"><strong>Where to go:</strong> Any street vendor in winter (November&ndash;February). The best are near temple fairs during Chinese New Year and along Wangfujing Snack Street. ¥5&ndash;10 per skewer. Avoid any that look melted or sticky &mdash; that means they&rsquo;ve been sitting too long.</p>
     </section>

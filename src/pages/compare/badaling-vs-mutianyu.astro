@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 ---
 
 <BaseLayout title="Badaling vs Mutianyu Great Wall: Which Section to Visit?" description="Mutianyu or Badaling? Compare crowds, difficulty, scenery, distance from Beijing, and ticket prices. Honest breakdown to pick the right Great Wall section.">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+  <Breadcrumb items={[{ label: "Compare", href: "/#compare-guides" }, { label: "Badaling vs Mutianyu" }]} />
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
     <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-6">Badaling vs Mutianyu: Which Great Wall Should You Visit?</h1>
     <blockquote class="border-l-4 border-accent pl-4 py-2 mb-8 bg-accent-bg/30 rounded-r">
       <p class="text-base text-base-700 leading-relaxed"><strong>The short answer:</strong> For first-time visitors who want the iconic postcard view and don't mind crowds, pick Badaling. For families, photographers, and anyone who values a relaxed experience over the classic photo, go Mutianyu. If you're still unsure after reading this guide, Mutianyu is the safer bet - we've sent dozens of friends and family there and nobody has ever come back disappointed.</p>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { siteConfig } from "../../data/site";
 
 const title = "Beijing Travel Tips: 20 Things to Know Before You Go [2026]";
@@ -10,7 +11,8 @@ const date = "2026-07-31";
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+  <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Beijing Travel Tips" }]} />
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
     <header class="mb-10">
       <p class="text-sm text-base-400 mb-2">Published {date}</p>
       <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">Beijing Travel Tips: 20 Things to Know Before You Go [2026]</h1>
@@ -25,6 +27,15 @@ const date = "2026-07-31";
       "author": { "@type": "Organization", "name": "${siteConfig.name}" },
       "publisher": { "@type": "Organization", "name": "${siteConfig.name}", "url": "${siteConfig.url}" },
       "mainEntityOfPage": { "@type": "WebPage", "@id": "${siteConfig.url}${slug}" }
+    }`}></script>
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "${siteConfig.url}/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "${siteConfig.url}/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Beijing Travel Tips" }
+      ]
     }`}></script>
     <section class="mb-10">
       <p class="text-base text-base-600 leading-relaxed mb-4">Beijing rewards travelers who come prepared. It&rsquo;s a huge city (22 million people across 16,800 square kilometers), and the gap between a good trip and a frustrating one often comes down to knowing what to expect. These 20 tips cover the practical stuff guidebooks skip &mdash; from how the subway really works to which apps you actually need on your phone.</p>

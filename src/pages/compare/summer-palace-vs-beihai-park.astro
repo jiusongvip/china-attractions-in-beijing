@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 ---
 
 <BaseLayout title="Summer Palace vs Beihai Park: Which Imperial Garden Should You Visit?" description="Summer Palace or Beihai Park? Compare the two imperial gardens — scale, lake experiences, crowds, and best visit times. Honest verdict on which royal garden fits your itinerary.">
-  <div class="relative py-24 md:py-32 overflow-hidden">
+  <Breadcrumb items={[{ label: "Compare", href: "/#compare-guides" }, { label: "Summer Palace vs Beihai Park" }]} />
+  <div class="relative py-24 md:py-32 overflow-hidden -mt-[68px]">
     <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/attractions/beihai-park.webp')"></div>
     <div class="absolute inset-0 bg-[#0a3b36]/88"></div>
     <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">

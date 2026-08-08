@@ -15,14 +15,21 @@ const days = [
 const planSteps = [
   { n: 1, title: "Pick dates", text: "Apr-May & Sep-Oct are best. Skip Oct 1-7 Golden Week.", href: "/best-time", linkText: "Month-by-month →" },
   { n: 2, title: "Copy itinerary", text: "Day 1 palace. Day 2 wall. Day 3 gardens — done.", href: "/collections/beijing-3-day-itinerary", linkText: "3-day plan →" },
-  { n: 3, title: "Know the cost", text: "Free to CNY 100 per attraction. Our price table is always current.", href: "/compare", linkText: "Compare prices →" },
+  { n: 3, title: "Know the cost", text: "Free to CNY 100 per attraction. Our price table is always current.", href: "/blog/cost-of-beijing-trip", linkText: "Compare prices →" },
   { n: 4, title: "Sort logistics", text: "Visa, subway card, translation app, passport. Handle before you fly.", href: "/faq", linkText: "China prep →" },
 ];
 
 const decidingCards = [
   { icon: "star", color: "text-[#0f766e]", title: "Is Beijing worth visiting?", text: "For history and food lovers, absolutely — it\u2019s a top-three China destination. Honest pros and cons inside.", href: "/about", linkText: "Honest assessment →" },
-  { icon: "ticket", color: "text-[#d4a373]", title: "How much does it cost?", text: "3-day: free to CNY 300 depending on style. Real 2026 prices.", href: "/compare", linkText: "Budget breakdown →" },
+  { icon: "ticket", color: "text-[#d4a373]", title: "How much does it cost?", text: "3-day: free to CNY 300 depending on style. Real 2026 prices.", href: "/blog/cost-of-beijing-trip", linkText: "Budget breakdown →" },
   { icon: "map-pin", color: "text-[#2dd4bf]", title: "Too much to choose?", text: "Mutianyu or Badaling? Palace or garden? Our comparisons settle the classics.", href: "/compare/badaling-vs-mutianyu", linkText: "See comparisons →" },
+];
+
+const compareCards = [
+  { title: "Badaling vs Mutianyu", icon: "building-castle", desc: "The two most famous Great Wall sections — crowds, scenery, cable car, and the toboggan.", href: "/compare/badaling-vs-mutianyu" },
+  { title: "Forbidden City vs Summer Palace", icon: "building-castle", desc: "Power vs pleasure — the two grandest imperial sites and how they reward you differently.", href: "/compare/forbidden-city-vs-summer-palace" },
+  { title: "Summer Palace vs Beihai Park", icon: "trees", desc: "One vast destination garden, one central interlude — which fits your itinerary.", href: "/compare/summer-palace-vs-beihai-park" },
+  { title: "Lama Temple vs Temple of Heaven", icon: "temple", desc: "Living faith vs imperial ritual — atmosphere, the Buddha, and the Hall of Prayer.", href: "/compare/lama-temple-vs-temple-of-heaven" },
 ];
 
 const seasons = [
@@ -100,7 +107,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 
   <!-- 1. Hero -->
-  <section class="relative min-h-screen flex items-center overflow-hidden">
+  <section class="relative min-h-screen flex items-center overflow-hidden -mt-[68px]">
     <img src="/images/hero-tiananmen.webp" alt="Tiananmen at the north end of Beijing's central axis, wide shot" class="absolute inset-0 h-full w-full object-cover" width="1200" height="798" />
     <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
     <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-16 px-6 pt-32 lg:flex-row lg:items-center lg:pt-0">
@@ -213,12 +220,35 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
         ))}
       </div>
       <div class="mt-8 text-center">
-        <a href="/compare" class="inline-flex items-center text-sm font-semibold text-white hover:text-[#99f6e4] hover:underline">Full comparison table and every attraction guide →</a>
+        <a href="#compare-guides" class="inline-flex items-center text-sm font-semibold text-white hover:text-[#99f6e4] hover:underline">Can't decide between two sights? See our comparison guides →</a>
       </div>
     </div>
   </section>
 
-  <!-- 6. Still deciding -->
+  <!-- 6. Compare guides -->
+  <section class="py-24 md:py-32 overflow-hidden gradient-warm" id="compare-guides">
+    <div class="relative z-10 mx-auto max-w-7xl px-6">
+      <div class="text-center mb-14">
+        <span class="tag tag-warm mb-4">Compare & Decide</span>
+        <h2 class="text-4xl font-bold tracking-tight md:text-5xl text-[#1c1a16]">Attraction Comparisons</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-[#5c5a4c]">Stuck between two sights? Our honest side-by-side guides settle the classics.</p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        {compareCards.map((c) => (
+          <a href={c.href} class="card-playful group flex items-start gap-4 rounded-2xl bg-white p-7 shadow-sm border border-[#d5d0c4]/40 hover:border-[#99f6e4]/60 transition-all hover:-translate-y-1 scroll-reveal">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0f766e] to-[#5eead4] text-white"><Icons name={c.icon} size={22} /></div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-bold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors">{c.title}</h3>
+              <p class="mt-1 text-sm text-[#5c5a4c] leading-relaxed">{c.desc}</p>
+              <span class="mt-3 inline-flex items-center text-sm font-semibold text-[#0f766e] group-hover:underline">Read the comparison →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Still deciding -->
   <section class="relative py-24 md:py-32 overflow-hidden">
     <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/attractions/tiananmen-square.webp')"></div>
     <div class="absolute inset-0 bg-white/88"></div>
@@ -230,7 +260,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       </div>
       <div class="grid gap-8 md:grid-cols-3">
         {decidingCards.map((c) => (
-          <a href={c.link} class="card-playful group rounded-2xl bg-white p-8 shadow-sm border border-[#d5d0c4]/40 scroll-reveal">
+          <a href={c.href} class="card-playful group rounded-2xl bg-white p-8 shadow-sm border border-[#d5d0c4]/40 scroll-reveal">
             <div class={`text-3xl mb-4 ${c.color}`}><Icons name={c.icon} size={30} /></div>
             <h3 class="text-xl font-bold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors">{c.title}</h3>
             <p class="mt-2 text-sm text-[#5c5a4c]">{c.text}</p>

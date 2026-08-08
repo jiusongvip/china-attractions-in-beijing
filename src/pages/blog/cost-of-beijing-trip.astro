@@ -1,0 +1,143 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { siteConfig } from "../../data/site";
+
+const title = "How Much Does a Beijing Trip Cost? 2026 Budget Guide";
+const description = "Real 2026 costs for a Beijing trip: flights, hotels, attraction tickets, food, transport. Daily budgets for budget, mid-range, and luxury travelers, with a sample 5-day breakdown.";
+const slug = "/blog/cost-of-beijing-trip/";
+const date = "2026-08-08";
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: "Beijing Trip Cost" }]} />
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
+    <header class="mb-10">
+      <p class="text-sm text-base-400 mb-2">Published {date}</p>
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">How Much Does a Beijing Trip Cost? 2026 Budget Guide</h1>
+      <p class="text-lg text-base-500 leading-relaxed">The honest answer: a 5-day trip to Beijing costs anywhere from CNY 2,500 (~$350) per person on a tight budget to CNY 12,000+ (~$1,700) for comfort, before flights. Here's exactly where the money goes.</p>
+    </header>
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "${title}",
+      "description": "${description}",
+      "datePublished": "${date}",
+      "author": { "@type": "Organization", "name": "${siteConfig.name}" },
+      "publisher": { "@type": "Organization", "name": "${siteConfig.name}", "url": "${siteConfig.url}" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "${siteConfig.url}${slug}" }
+    }`}></script>
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "${siteConfig.url}/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "${siteConfig.url}/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Beijing Trip Cost" }
+      ]
+    }`}></script>
+
+    <section class="mb-10">
+      <p class="text-base text-base-600 leading-relaxed mb-4">Beijing is one of the better-value capitals in the world for travelers. Attractions are cheap, the subway costs pennies, and a filling street breakfast runs under CNY 10. But hotels, flights, and any Western-style comfort add up fast. This guide breaks down every category with real 2026 numbers we've verified, plus sample budgets for three travel styles.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">The Bottom Line: Daily Budgets</h2>
+      <div class="table-responsive mb-4">
+      <table class="table-attractions">
+        <thead><tr><th>Style</th><th>Per person / day (excl. hotel)</th><th>Hotel / night</th><th>5-day total (excl. flight)</th></tr></thead>
+        <tbody>
+          <tr><td>Budget backpacker</td><td>CNY 120-180</td><td>CNY 80-150 (hostel dorm)</td><td>CNY 1,200-1,800</td></tr>
+          <tr><td>Mid-range</td><td>CNY 250-400</td><td>CNY 400-700</td><td>CNY 3,500-5,500</td></tr>
+          <tr><td>Comfort / luxury</td><td>CNY 700-1,200</td><td>CNY 1,200-3,000+</td><td>CNY 9,500-20,000</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="text-sm text-base-600 leading-relaxed">These exclude international flights, which are the single biggest variable and range from ~$600 round-trip from Southeast Asia to $1,500-2,000+ from the US or Europe depending on season. Within China, add CNY 500-2,000 for domestic connections depending on where you're coming from.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">Attraction Tickets: The Cheap Part</h2>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Beijing's headline sights are remarkably affordable. The most expensive major attraction is the Forbidden City at CNY 40-60, and many of the best experiences — Tiananmen Square, the National Museum, 798 Art Zone, the hutongs — are free. Here's the full picture:</p>
+      <ul class="space-y-2 text-sm text-base-600 mb-4">
+        <li class="flex items-start gap-2"><Icons name="check" size={18} class="text-accent mt-0.5 shrink-0" /><span><strong>Free:</strong> Tiananmen Square, National Museum (reserve ahead), 798 Art Zone, Nanluoguxiang, Jingshan Park is just CNY 2</span></li>
+        <li class="flex items-start gap-2"><Icons name="check" size={18} class="text-accent mt-0.5 shrink-0" /><span><strong>Under CNY 20:</strong> Temple of Heaven (CNY 10-15), Beihai Park (CNY 10), Beijing Zoo (CNY 15-20)</span></li>
+        <li class="flex items-start gap-2"><Icons name="check" size={18} class="text-accent mt-0.5 shrink-0" /><span><strong>CNY 20-60:</strong> Summer Palace (CNY 20-30), Lama Temple (CNY 25), Great Wall sections (CNY 35-45), Ming Tombs (CNY 40-60)</span></li>
+      </ul>
+      <p class="text-sm text-base-600 leading-relaxed">The Great Wall is where the extras stack up: Badaling's cable car adds about CNY 100-140, Mutianyu's cable car + toboggan combo around CNY 140-180. Budget CNY 150-250 for a "full" Great Wall day including transport.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">Food: Where You Save the Most</h2>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Food is where Beijing travelers see the widest spread between styles. A street breakfast (jianbing, baozi, soy milk) costs CNY 8-15. A bowl of zhajiangmian or a dumpling lunch runs CNY 15-30. A proper mid-range dinner with hot pot or roast duck for two lands around CNY 120-250 total. Imperial court cuisine at a courtyard restaurant is the splurge at CNY 300-600 per person.</p>
+      <div class="table-responsive mb-4">
+      <table class="table-attractions">
+        <thead><tr><th>Meal</th><th>Budget</th><th>Mid-range</th><th>Splurge</th></tr></thead>
+        <tbody>
+          <tr><td>Breakfast</td><td>CNY 8-15 (street)</td><td>CNY 30-60 (cafe)</td><td>—</td></tr>
+          <tr><td>Lunch</td><td>CNY 15-30 (noodles)</td><td>CNY 50-100</td><td>CNY 150-300</td></tr>
+          <tr><td>Dinner</td><td>CNY 30-50</td><td>CNY 120-250 (hotpot/duck for 2)</td><td>CNY 300-600+ per person</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="text-sm text-base-600 leading-relaxed">A daily food budget of CNY 60-80 per person is realistic for budget travelers eating well on street food and noodle shops; CNY 150-250 covers comfort; CNY 400+ for serious dining.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">Getting Around</h2>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">The subway is the backbone of Beijing transport and one of the cheapest in the world: fares run CNY 3-9 per ride, English signage is everywhere, and every major attraction is one transfer from a Line 1/2/4/5/8 stop. A Yikatong card (CNY 20 deposit, then top up) is the efficient choice. Taxis start around CNY 13 and a cross-city ride is typically CNY 30-80. Didi (the Chinese Uber) is similar.</p>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">The big transport line item is the Great Wall day. Public transport (bus/train) costs CNY 20-40 round trip; a shared tour bus is CNY 100-200; a private driver for the day runs CNY 500-800. Budget travelers do the public route; the private driver is worth it for families or anyone short on time.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">Where to Stay: Neighborhood vs Budget</h2>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Location moves your budget more than any other choice. Dongcheng, around the Forbidden City and Wangfujing, is the priciest and most convenient. Hutong guesthouses near Gulou offer charm at mid-range prices. Chaoyang (Sanlitun) has the international hotels and nightlife. See our full <a href="/blog/where-to-stay-in-beijing" class="text-accent hover:text-accent-light">where-to-stay guide</a> for the neighborhood-by-neighborhood breakdown.</p>
+      <ul class="space-y-2 text-sm text-base-600 mb-4">
+        <li class="flex items-start gap-2"><Icons name="check" size={18} class="text-accent mt-0.5 shrink-0" /><span><strong>Budget:</strong> hostels and capsule hotels CNY 80-200/night; local guesthouses CNY 150-300</span></li>
+        <li class="flex items-start gap-2"><Icons name="check" size={18} class="text-accent mt-0.5 shrink-0" /><span><strong>Mid-range:</strong> 3-4 star business hotels CNY 400-800/night, good value with breakfast included</span></li>
+        <li class="flex items-start gap-2"><Icons name="check" size={18} class="text-accent mt-0.5 shrink-0" /><span><strong>Luxury:</strong> international chains and courtyard hotels CNY 1,200-3,000+/night</span></li>
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">Sample 5-Day Budgets</h2>
+      <p class="text-sm text-base-600 mb-4 leading-relaxed">Here's what a realistic 5-day trip actually costs per person, excluding flights, at each budget level.</p>
+      <div class="table-responsive mb-4">
+      <table class="table-attractions">
+        <thead><tr><th>Category</th><th>Budget</th><th>Mid-range</th><th>Comfort</th></tr></thead>
+        <tbody>
+          <tr><td>Hotel (4 nights)</td><td>CNY 600 (dorms)</td><td>CNY 2,400</td><td>CNY 6,000</td></tr>
+          <tr><td>Attractions</td><td>CNY 200</td><td>CNY 350</td><td>CNY 500 (incl. cable cars)</td></tr>
+          <tr><td>Food</td><td>CNY 350</td><td>CNY 800</td><td>CNY 2,000</td></tr>
+          <tr><td>Transport</td><td>CNY 120</td><td>CNY 400 (incl. Great Wall)</td><td>CNY 1,200 (private drivers)</td></tr>
+          <tr><td><strong>Total (excl. flight)</strong></td><td><strong>CNY ~1,300</strong></td><td><strong>CNY ~4,000</strong></td><td><strong>CNY ~9,700</strong></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="text-sm text-base-600 leading-relaxed">Add CNY 500-3,000 for the visa (varies by nationality and processing), and budget extra if you're traveling in high season (April-May, September-October) when hotels run 20-40% higher.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">Money-Saving Tips That Actually Work</h2>
+      <ol class="space-y-3 text-sm text-base-600">
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">1.</span><span><strong>Eat where locals eat, not where the tourist streets point.</strong> Street food and noodle shops off the main drags are a fraction of restaurant prices and often better. Guijie and Nanluoguxiang are tourist-priced; the lane behind your hotel is not.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">2.</span><span><strong>Use the subway, not taxis.</strong> A taxi across town (CNY 40-80) costs the same as a day of unlimited subway rides. The subway is faster in traffic anyway.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">3.</span><span><strong>Do the free stuff first.</strong> The National Museum, Tiananmen, 798, and the hutongs are genuinely world-class and free. See our <a href="/collections/free-beijing-attractions" class="text-accent hover:text-accent-light">free attractions guide</a>.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">4.</span><span><strong>Book the Forbidden City online yourself, not through a tour.</strong> The ticket is CNY 40-60 either way, but tours add a markup and tie you to their schedule. Reserve 7 days out on the official site.</span></li>
+        <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">5.</span><span><strong>Travel shoulder season.</strong> September-October and April-May are the best weather, and hotel rates are 20-40% below peak summer and Golden Week. December-February is cheapest of all if you don't mind the cold.</span></li>
+      </ol>
+    </section>
+
+    <section class="border-t border-base-200 pt-8">
+      <h3 class="text-lg font-semibold mb-3">Related Guides</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="/collections/free-beijing-attractions" class="text-accent hover:text-accent-light">Free Beijing Attractions: Explore on a Budget</a></li>
+        <li><a href="/collections/beijing-3-day-itinerary" class="text-accent hover:text-accent-light">3 Days in Beijing: The Perfect Itinerary</a></li>
+        <li><a href="/blog/where-to-stay-in-beijing" class="text-accent hover:text-accent-light">Where to Stay in Beijing: Best Areas for Tourists</a></li>
+        <li><a href="/blog/what-to-eat-in-beijing" class="text-accent hover:text-accent-light">What to Eat in Beijing: 15 Must-Try Dishes</a></li>
+      </ul>
+    </section>
+
+  </article>
+</BaseLayout>

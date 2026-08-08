@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 ---
 
 <BaseLayout title="3 Days in Beijing: The Perfect Itinerary [2026]" description="Ultimate 3-day Beijing itinerary: Great Wall, Forbidden City, Temple of Heaven, and hidden hutongs. Day-by-day plan with subway routes and ticket tips.">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+  <Breadcrumb items={[{ label: "Itineraries", href: "/collections" }, { label: "3-Day Beijing Itinerary" }]} />
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
     <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">The Perfect 3-Day Beijing Itinerary</h1>
     <p class="text-lg text-base-500 leading-relaxed mb-8">Three days is the sweet spot for Beijing. You'll hit all the essential sights without feeling rushed. Here's exactly how to spend each day.</p>
   </div>

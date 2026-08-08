@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import AttractionCard from "../../components/AttractionCard.astro";
 import { attractions } from "../../data/attractions";
 
@@ -8,7 +9,8 @@ const kidFriendly = attractions.filter((a) => a.familyFriendly);
 ---
 
 <BaseLayout title="Beijing with Kids: 10 Family-Friendly Attractions [2026]" description="The best family-friendly Beijing attractions for kids of all ages. From the Great Wall toboggan slide to pandas at the zoo. Safe, fun, and unforgettable.">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+  <Breadcrumb items={[{ label: "Itineraries", href: "/collections" }, { label: "Beijing with Kids" }]} />
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
     <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">Beijing with Kids</h1>
     <p class="text-lg text-base-500 leading-relaxed max-w-2xl mb-8">Family-friendly attractions that both kids and adults will love. From giant pandas to the Great Wall toboggan ride.</p>
   </div>
