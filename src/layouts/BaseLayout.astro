@@ -56,11 +56,46 @@ const canonical = new URL(rawPath, Astro.site).href;
     }
   </script>
 </head>
-<body class="min-h-screen flex flex-col bg-base-50 text-base-900">
+<body class="min-h-screen flex flex-col bg-base-50 text-base-900 antialiased">
   <Header />
-  <main class="flex-1">
+  <main class="flex-1 relative z-10">
     <slot />
   </main>
   <Footer />
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      if (btn && menu) {
+        btn.addEventListener("click", () => {
+          const open = menu.classList.toggle("hidden");
+          btn.setAttribute("aria-expanded", String(!open));
+        });
+        document.addEventListener("click", (e) => {
+          if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.add("hidden");
+            btn.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+      const reducer = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (!reducer.matches) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+      } else {
+        document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('visible'));
+      }
+      const headerEl = document.getElementById('site-header');
+      window.addEventListener('scroll', () => {
+        if (headerEl) {
+          headerEl.classList.toggle('nav-scrolled', window.scrollY > 40);
+        }
+      }, { passive: true });
+    });
+  </script>
 </body>
 </html>

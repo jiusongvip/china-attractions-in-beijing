@@ -1,41 +1,54 @@
 ---
 const year = new Date().getFullYear();
+import Icons from "./Icons.astro";
 ---
 
-<footer class="bg-base-900 text-base-300 mt-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="mountain-divider"></div>
+
+<footer class="relative z-10 bg-gradient-to-b from-[#edeae3] to-[#f8f7f4] pt-16 pb-12">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid gap-12 md:grid-cols-4">
       <div>
-        <h4 class="text-white text-lg font-semibold mb-4">China Attractions in Beijing</h4>
-        <p class="text-base-400 text-sm leading-relaxed max-w-xs">
-          The most comprehensive guide to Beijing's best attractions. Updated with current ticket prices, subway directions, and honest recommendations.
-        </p>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#0f766e] to-[#5eead4] text-white text-sm font-bold">
+            <Icons name="building-castle" size={18} />
+          </span>
+          <span class="text-lg font-bold tracking-tight text-[#0f766e]">Beijing Attractions</span>
+        </div>
+        <p class="max-w-xs text-sm leading-relaxed text-[#5c5a4c]">Independent travel guide to Beijing's best attractions. Real ticket prices, subway exits, and honest recommendations from the Great Wall to hidden hutongs.</p>
       </div>
       <div>
-        <h4 class="text-white text-sm font-semibold mb-4 uppercase tracking-wider">Explore</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/attractions/forbidden-city" class="hover:text-white transition-colors">Forbidden City</a></li>
-          <li><a href="/attractions/great-wall-mutianyu" class="hover:text-white transition-colors">Great Wall</a></li>
-          <li><a href="/attractions/temple-of-heaven" class="hover:text-white transition-colors">Temple of Heaven</a></li>
-          <li><a href="/attractions/summer-palace" class="hover:text-white transition-colors">Summer Palace</a></li>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#2dd4bf] mb-4">Explore</p>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/attractions/forbidden-city" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Forbidden City</a></li>
+          <li><a href="/attractions/great-wall-mutianyu" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Great Wall</a></li>
+          <li><a href="/attractions/temple-of-heaven" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Temple of Heaven</a></li>
+          <li><a href="/attractions/summer-palace" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Summer Palace</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-white text-sm font-semibold mb-4 uppercase tracking-wider">Resources</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/compare" class="hover:text-white transition-colors">Attraction Comparisons</a></li>
-          <li><a href="/#food" class="hover:text-white transition-colors">What to Eat</a></li>
-          <li><a href="/#stay" class="hover:text-white transition-colors">Where to Stay</a></li>
-          <li><a href="/subway-guide" class="hover:text-white transition-colors">Beijing Subway Guide</a></li>
-          <li><a href="/best-time" class="hover:text-white transition-colors">Best Time to Visit</a></li>
-          <li><a href="/faq" class="hover:text-white transition-colors">FAQ</a></li>
-          <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#d4a373] mb-4">Plan</p>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/collections/beijing-3-day-itinerary" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">3-Day Itinerary</a></li>
+          <li><a href="/compare" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Attraction Comparisons</a></li>
+          <li><a href="/best-time" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Best Time to Visit</a></li>
+          <li><a href="/subway-guide" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Subway Guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#78716c] mb-4">Essentials</p>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/faq" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Visa & FAQ</a></li>
+          <li><a href="/#food" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">What to Eat</a></li>
+          <li><a href="/#stay" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Where to Stay</a></li>
+          <li><a href="/blog" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">Travel Blog</a></li>
+          <li><a href="/about" class="text-[#5c5a4c] transition-colors hover:text-[#0f766e]">About</a></li>
         </ul>
       </div>
     </div>
-    <div class="border-t border-base-700 mt-12 pt-8 text-sm text-base-500 flex flex-col sm:flex-row justify-between gap-4">
-      <span>&copy; {year} China Attractions in Beijing</span>
-      <span>china-attractions-in-beijing.com</span>
+    <div class="mt-12 pt-8 border-t border-[#d5d0c4] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-[#5c5a4c]/60">&copy; {year} Beijing Attractions. Independent travel guide. Not affiliated with any tour agency or hotel.</p>
+      <p class="text-xs text-[#5c5a4c]/60">china-attractions-in-beijing.com</p>
     </div>
   </div>
 </footer>

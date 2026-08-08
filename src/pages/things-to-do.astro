@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icons from "../components/Icons.astro";
+import { attractions } from "../data/attractions";
+
+const pageTitle = "20 Best Things to Do in Beijing: From Palaces to Hot Pot [2026]";
+const pageDesc = "The 20 best things to do in Beijing, ranked — imperial palaces, the Great Wall, hutongs, Peking duck, hot pot, parks, and nightlife. Honest picks with prices, times, and insider tips.";
+
+const items = [
+  { n: 1, title: "Walk the Forbidden City", link: "/attractions/forbidden-city", icon: "building-castle", tag: "Icon", desc: "China's imperial heart — 24 emperors, 980 buildings, one unforgettable morning. Book 7 days ahead.", time: "3-4 hrs" },
+  { n: 2, title: "See the Great Wall from Mutianyu", link: "/attractions/great-wall-mutianyu", icon: "building-castle", tag: "Must-do", desc: "Forest-framed wall, gentle slopes, and a 1,580m toboggan down. The crowd-free Great Wall experience.", time: "Full day" },
+  { n: 3, title: "Stand in Tiananmen Square", link: "/attractions/tiananmen-square", icon: "map-pin", tag: "Icon", desc: "The world's largest public square — come at dawn for the flag-raising ceremony.", time: "1-2 hrs" },
+  { n: 4, title: "See the Summer Palace by boat", link: "/attractions/summer-palace", icon: "trees", tag: "Best views", desc: "Kunming Lake, the 728m Long Corridor, and the Marble Boat. China's most beautiful imperial garden.", time: "3-4 hrs" },
+  { n: 5, title: "Climb Jingshan for the palace panorama", link: "/attractions/jingshan-park", icon: "trees", tag: "Budget", desc: "CNY 2 for the single best view in Beijing — the entire Forbidden City from Wanchun Pavilion.", time: "45 min" },
+  { n: 6, title: "Photograph the Temple of Heaven at dawn", link: "/attractions/temple-of-heaven", icon: "temple", tag: "Icon", desc: "The blue-roofed Hall of Prayer plus the city's best morning tai chi and opera scene.", time: "2-3 hrs" },
+  { n: 7, title: "Row across Beihai Lake", link: "/attractions/beihai-park", icon: "trees", tag: "Relax", desc: "Beijing's oldest imperial garden, the White Dagoba, and rowboats on a willow-fringed lake.", time: "2 hrs" },
+  { n: 8, title: "Explore the hutongs around Nanluoguxiang", link: "/attractions/nanluoguxiang", icon: "shopping-bag", tag: "Culture", desc: "Yuan-dynasty lanes, courtyard homes, and the quiet alleys where the old city still breathes.", time: "1-2 hrs" },
+  { n: 9, title: "Watch the sun set over the Bell & Drum Towers", link: "/attractions/beijing-bell-tower", icon: "clock", tag: "New", desc: "Climb the Bell Tower for a rooftop panorama of the old city's grey-tiled rooftops.", time: "1 hr" },
+  { n: 10, title: "Find the pandas at Beijing Zoo", link: "/attractions/beijing-zoo", icon: "heart", tag: "Family", desc: "Giant pandas up close for CNY 15 — the city's most beloved family outing.", time: "2-3 hrs" },
+  { n: 11, title: "Eat Peking duck, done properly", link: "/blog/what-to-eat-in-beijing", icon: "bowl", tag: "Food", desc: "Siji Minfu or Da Dong — crispy skin, thin pancakes, and the tableside carving ritual.", time: "2 hrs" },
+  { n: 12, title: "Get lost in 798 Art Zone", link: "/attractions/798-art-zone", icon: "mask", tag: "Culture", desc: "Bauhaus factories turned contemporary art district — murals, galleries, and cafe culture, free to wander.", time: "2-3 hrs" },
+  { n: 13, title: "Tour the Ming Tombs", link: "/attractions/ming-tombs", icon: "building-castle", tag: "History", desc: "The 13 tombs of Ming emperors at the foot of the mountains, 45 minutes north of the city.", time: "Half day" },
+  { n: 14, title: "Take the Great Wall cable car at Badaling", link: "/attractions/great-wall-badaling", icon: "building-castle", tag: "Icon", desc: "The postcard section, cable car to Tower 4, and the classic panorama of the Wall snaking to the horizon.", time: "3-4 hrs" },
+  { n: 15, title: "Feel the incense at the Lama Temple", link: "/attractions/lama-temple", icon: "temple", tag: "Culture", desc: "Beijing's most atmospheric site — the 18m sandalwood Buddha in a working Tibetan lamasery.", time: "90 min" },
+  { n: 16, title: "Spend an hour in the National Museum", link: "/attractions/national-museum", icon: "building-museum", tag: "Free", desc: "5,000 years of Chinese civilization in one free, world-class gallery.", time: "2 hrs" },
+  { n: 17, title: "Hunt treasure at Panjiayuan Market", link: "/blog/beijing-travel-tips", icon: "shopping-bag", tag: "Shopping", desc: "Beijing's antique and flea market — jade, calligraphy, and the fine art of haggling.", time: "2 hrs" },
+  { n: 18, title: "Share a copper-pot hot pot", link: "/blog/what-to-eat-in-beijing", icon: "bowl", tag: "Food", desc: "Dong Lai Shun's classic mutton hot pot — the dish that warms a Beijing winter.", time: "2 hrs" },
+  { n: 19, title: "Ride the subway like a local", link: "/subway-guide", icon: "train", tag: "Budget", desc: "CNY 3-9, English signage, and every sight on this list is one transfer from a Line 1/2/5 stop.", time: "Ongoing" },
+  { n: 20, title: "Night out on Guijie (Ghost Street)", link: "/blog/beijing-travel-tips", icon: "star", tag: "Nightlife", desc: "Red lanterns and crayfish till 4am — the eating street where Beijing stays up.", time: "Evening" },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How many days do I need to do the main things in Beijing?","acceptedAnswer":{"@type":"Answer","text":"Three days covers the essentials: the Forbidden City and Tiananmen on day one, a Great Wall day on day two, and the Temple of Heaven, Summer Palace, and hutongs on day three."}},
+      {"@type":"Question","name":"Which Great Wall section is the best thing to do?","acceptedAnswer":{"@type":"Answer","text":"Mutianyu for fewer crowds, the forest setting, and the toboggan slide; Badaling for the classic postcard scene."}},
+      {"@type":"Question","name":"What are the best free things to do in Beijing?","acceptedAnswer":{"@type":"Answer","text":"The National Museum, Tiananmen Square, 798 Art Zone, and wandering the hutongs around Nanluoguxiang are all free. Jingshan Park is CNY 2 for the best view in the city."}},
+      {"@type":"Question","name":"What should I eat while I'm in Beijing?","acceptedAnswer":{"@type":"Answer","text":"Peking duck, a copper-pot mutton hot pot, zhajiangmian noodles, and street snacks like jianbing and tanghulu."}},
+      {"@type":"Question","name":"What time of year is best for these activities?","acceptedAnswer":{"@type":"Answer","text":"April-May and September-October for clear skies and comfortable weather. Winter is quiet and cheap; summer is hot but the lakes and museums shine."}}
+    ]
+  })}></script>
+  <div class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/hero-tiananmen.webp')"></div>
+    <div class="absolute inset-0 bg-[#0a3b36]/88"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <span class="tag tag-glass mb-4">The Ultimate List</span>
+      <h1 class="font-display text-4xl font-normal tracking-tight text-white md:text-6xl">20 Best Things to Do in Beijing</h1>
+      <p class="mt-5 mx-auto max-w-2xl text-lg text-white/80">Ranked by a mix of fame, fun, and how much they define the Beijing experience. Real prices, real times, real insider tips — no filler.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-2">
+        {["Icon","Must-do","Culture","Food","Free","Budget","Family","History","Nightlife","Relax","Shopping","Best views"].map((t) => (
+          <span class="rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm text-white/85">{t}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <section class="py-16 md:py-24">
+    <div class="mx-auto max-w-3xl px-6">
+      <div class="prose-heading">
+        <h2 class="text-2xl font-bold text-[#1c1a16] mb-4">What to Do in Beijing: The Complete Picture</h2>
+        <p class="text-[#5c5a4c] leading-relaxed mb-4">Beijing rewards travelers who mix its two personalities. One is the imperial city — the Forbidden City, the Great Wall, the Temple of Heaven, the lakeside palaces that made this the seat of empire for 800 years. The other is the living city — hutong lanes, art districts, Peking duck at a tableside carving cart, and hot pot bubbling past midnight.</p>
+        <p class="text-[#5c5a4c] leading-relaxed mb-4">Our list of 20 things to do in Beijing is ordered so that the first items are the unmissable icons, and the later ones fill in the culture, food, and neighborhood experiences that make a trip feel complete. Each entry links to a full guide with real prices, subway routes, and crowd-beating tips, so you can plan as deep as you want.</p>
+        <p class="text-[#5c5a4c] leading-relaxed mb-6"><strong class="text-[#1c1a16]">How to use this list:</strong> with 3 days, cover items 1-7 plus a Great Wall day. With 5 days, add the food, art, and neighborhood picks (items 8-15). Everything else is for return visits or rainy-day flexibility. Prices are for 2026 and we re-verify them before every season.</p>
+      </div>
+
+      <div class="space-y-5">
+        {items.map((it) => (
+          <a href={it.link} class="card-playful group flex items-stretch gap-5 rounded-2xl bg-white shadow-sm border border-[#d5d0c4]/40 hover:border-[#99f6e4]/60 transition-all hover:-translate-y-1 p-5 sm:p-6 scroll-reveal">
+            <div class="flex shrink-0 items-start">
+              <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0f766e] to-[#5eead4] text-white font-display text-xl font-normal shadow-md">{it.n}</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#d4a373]">{it.tag}</span>
+                <span class="text-xs text-[#5c5a4c]">· {it.time}</span>
+              </div>
+              <h3 class="text-lg font-bold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors flex items-center gap-2">
+                <Icons name={it.icon} size={18} class="text-[#0f766e] shrink-0" />
+                {it.title}
+              </h3>
+              <p class="mt-1 text-sm text-[#5c5a4c] leading-relaxed">{it.desc}</p>
+            </div>
+            <Icons name="chevron-right" size={20} class="self-center text-[#d5d0c4] group-hover:text-[#0f766e] transition-colors shrink-0" />
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-14">
+        <h2 class="text-2xl font-bold text-[#1c1a16] mb-6">Things to Do in Beijing: Quick Answers</h2>
+        <div class="space-y-4">
+          <div class="rounded-2xl bg-white border border-[#d5d0c4]/40 p-6 shadow-sm">
+            <h3 class="font-bold text-[#1c1a16] mb-2">How many days do I need to do the main things in Beijing?</h3>
+            <p class="text-sm text-[#5c5a4c] leading-relaxed">Three days covers the essentials: the Forbidden City and Tiananmen on day one, a Great Wall day on day two (Mutianyu or Badaling), and the Temple of Heaven, Summer Palace, and hutongs on day three. See our <a href="/collections/beijing-3-day-itinerary" class="text-[#0f766e] underline">3-day itinerary</a>.</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-[#d5d0c4]/40 p-6 shadow-sm">
+            <h3 class="font-bold text-[#1c1a16] mb-2">Which Great Wall section is the best thing to do?</h3>
+            <p class="text-sm text-[#5c5a4c] leading-relaxed">Mutianyu for fewer crowds, the forest setting, and the toboggan slide; Badaling for the classic postcard scene. Our <a href="/compare/badaling-vs-mutianyu" class="text-[#0f766e] underline">Badaling vs Mutianyu comparison</a> breaks down every factor.</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-[#d5d0c4]/40 p-6 shadow-sm">
+            <h3 class="font-bold text-[#1c1a16] mb-2">What are the best free things to do in Beijing?</h3>
+            <p class="text-sm text-[#5c5a4c] leading-relaxed">The National Museum, Tiananmen Square, 798 Art Zone, and wandering the hutongs around Nanluoguxiang are all free. Jingshan Park is CNY 2 for the best view in the city. See our <a href="/collections/free-beijing-attractions" class="text-[#0f766e] underline">free attractions collection</a>.</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-[#d5d0c4]/40 p-6 shadow-sm">
+            <h3 class="font-bold text-[#1c1a16] mb-2">What should I eat while I'm in Beijing?</h3>
+            <p class="text-sm text-[#5c5a4c] leading-relaxed">Peking duck done properly (Siji Minfu or Da Dong), a copper-pot mutton hot pot, zhajiangmian noodles, and street snacks like jianbing and tanghulu. Our <a href="/blog/what-to-eat-in-beijing" class="text-[#0f766e] underline">food guide</a> covers it all.</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-[#d5d0c4]/40 p-6 shadow-sm">
+            <h3 class="font-bold text-[#1c1a16] mb-2">What time of year is best for these activities?</h3>
+            <p class="text-sm text-[#5c5a4c] leading-relaxed">April-May and September-October for clear skies, blooming gardens, and comfortable Great Wall weather. Winter is quiet and cheap with snow on the Forbidden City; summer is hot but the lakes and museums shine. See our <a href="/best-time" class="text-[#0f766e] underline">month-by-month guide</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-14 rounded-2xl bg-[#fef3c7] border border-[#d4a373]/30 p-8 text-center">
+        <h2 class="text-2xl font-bold text-[#1c1a16]">Planning a trip?</h2>
+        <p class="mt-2 text-[#5c5a4c]">See the ready-made 3-day itinerary, compare attractions side by side, or check the best time to visit.</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <a href="/collections/beijing-3-day-itinerary" class="rounded-full bg-[#0f766e] text-white px-6 py-3 text-sm font-bold shadow-md shadow-[#0f766e]/20 transition-all hover:shadow-lg hover:scale-105">3-Day Itinerary</a>
+          <a href="/#must-do" class="rounded-full bg-white border border-[#d5d0c4] text-[#0f766e] px-6 py-3 text-sm font-bold transition-all hover:border-[#0f766e]/40">Browse Attractions</a>
+          <a href="/best-time" class="rounded-full bg-white border border-[#d5d0c4] text-[#0f766e] px-6 py-3 text-sm font-bold transition-all hover:border-[#0f766e]/40">Best Time to Visit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+---

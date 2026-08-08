@@ -1,16 +1,71 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icons from "../../components/Icons.astro";
 ---
 
-<BaseLayout title="Beijing Attraction Comparisons: Which One to Choose? [2026]" description="Honest side-by-side comparisons of Beijing attractions to help you decide. Badaling vs Mutianyu Great Wall, and more detailed guides with our recommendations.">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">Attraction Comparisons</h1>
-    <p class="text-lg text-base-500 leading-relaxed mb-8">Can't decide? Our honest side-by-side comparisons help you pick the right attraction for your trip.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <a href="/compare/badaling-vs-mutianyu" class="card group block p-5">
-        <h3 class="font-semibold text-base-900 group-hover:text-accent transition-colors mb-2">Badaling vs Mutianyu Great Wall</h3>
-        <p class="text-sm text-base-500">Which Great Wall section is right for you?</p>
-      </a>
+<BaseLayout title="Beijing Attraction Comparisons: Which One to Choose? [2026]" description="Honest side-by-side comparisons of Beijing attractions. Badaling vs Mutianyu, Forbidden City vs Summer Palace, Summer Palace vs Beihai Park, and Lama Temple vs Temple of Heaven — with clear verdicts.">
+  <div class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/attractions/forbidden-city.webp')"></div>
+    <div class="absolute inset-0 bg-[#0a3b36]/88"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <span class="tag tag-glass mb-4">Compare & Decide</span>
+      <h1 class="font-display text-4xl font-normal tracking-tight text-white md:text-5xl">Attraction Comparisons</h1>
+      <p class="mt-4 mx-auto max-w-2xl text-lg text-white/80">Can't decide? Honest side-by-side guides to help you pick the right attraction for your trip — no marketing spin.</p>
     </div>
   </div>
+
+  <section class="py-14 md:py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid gap-6 sm:grid-cols-2">
+        <a href="/compare/badaling-vs-mutianyu" class="card-playful group block rounded-2xl bg-white shadow-sm border border-[#d5d0c4]/40 hover:border-[#99f6e4]/60 transition-all hover:-translate-y-1 p-7 scroll-reveal">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ccfbf1]/40 text-[#0f766e]"><Icons name="building-castle" size={20} /></div>
+            <h3 class="text-lg font-bold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors">Badaling vs Mutianyu Great Wall</h3>
+          </div>
+          <p class="text-sm text-[#5c5a4c] leading-relaxed">Which Great Wall section is right for you? Crowds, scenery, cable car, the toboggan slide, and how to get there.</p>
+          <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0f766e] group-hover:underline">Read the comparison →</span>
+        </a>
+
+        <a href="/compare/forbidden-city-vs-summer-palace" class="card-playful group block rounded-2xl bg-white shadow-sm border border-[#d5d0c4]/40 hover:border-[#99f6e4]/60 transition-all hover:-translate-y-1 p-7 scroll-reveal">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ccfbf1]/40 text-[#0f766e]"><Icons name="building-castle" size={20} /></div>
+            <h3 class="text-lg font-bold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors">Forbidden City vs Summer Palace</h3>
+          </div>
+          <p class="text-sm text-[#5c5a4c] leading-relaxed">The two grandest imperial sites — power vs pleasure. Scale, crowds, tickets, and which fits your day.</p>
+          <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0f766e] group-hover:underline">Read the comparison →</span>
+        </a>
+
+        <a href="/compare/summer-palace-vs-beihai-park" class="card-playful group block rounded-2xl bg-white shadow-sm border border-[#d5d0c4]/40 hover:border-[#99f6e4]/60 transition-all hover:-translate-y-1 p-7 scroll-reveal">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ccfbf1]/40 text-[#0f766e]"><Icons name="trees" size={20} /></div>
+            <h3 class="text-lg font-bold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors">Summer Palace vs Beihai Park</h3>
+          </div>
+          <p class="text-sm text-[#5c5a4c] leading-relaxed">Two imperial lakeside gardens — one vast destination, one central interlude. Which fits your itinerary?</p>
+          <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0f766e] group-hover:underline">Read the comparison →</span>
+        </a>
+
+        <a href="/compare/lama-temple-vs-temple-of-heaven" class="card-playful group block rounded-2xl bg-white shadow-sm border border-[#d5d0c4]/40 hover:border-[#99f6e4]/60 transition-all hover:-translate-y-1 p-7 scroll-reveal">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ccfbf1]/40 text-[#0f766e]"><Icons name="temple" size={20} /></div>
+            <h3 class="text-lg font-bold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors">Lama Temple vs Temple of Heaven</h3>
+          </div>
+          <p class="text-sm text-[#5c5a4c] leading-relaxed">Living faith vs imperial ritual. Atmosphere, the sandalwood Buddha, the Hall of Prayer, and time needed.</p>
+          <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0f766e] group-hover:underline">Read the comparison →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-20">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="rounded-2xl bg-[#fef3c7] border border-[#d4a373]/30 p-8 text-center">
+        <h2 class="text-2xl font-bold text-[#1c1a16]">Still undecided?</h2>
+        <p class="mt-2 text-[#5c5a4c]">Browse every attraction side by side, or jump straight into a ready-made plan.</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <a href="/#must-do" class="rounded-full bg-[#0f766e] text-white px-6 py-3 text-sm font-bold shadow-md shadow-[#0f766e]/20 transition-all hover:shadow-lg hover:scale-105">All Attractions</a>
+          <a href="/collections/beijing-3-day-itinerary" class="rounded-full bg-white border border-[#d5d0c4] text-[#0f766e] px-6 py-3 text-sm font-bold transition-all hover:border-[#0f766e]/40">See the 3-Day Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

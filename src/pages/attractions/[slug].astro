@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icons from "../../components/Icons.astro";
 import { getAttractionBySlug, attractions } from "../../data/attractions";
+import { attractionExtras } from "../../data/attraction-content";
 
 export function getStaticPaths() {
   return attractions.map((a) => ({ params: { slug: a.slug } }));
@@ -10,6 +11,7 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const a = getAttractionBySlug(slug as string);
 if (!a) return Astro.redirect("/404");
+const extras = attractionExtras[a.slug];
 
 const pageTitle = a.name + " Beijing: Tickets & Tips [2026]";
 const pageDesc = "Planning your visit to " + a.name + " in Beijing? Our 2026 guide: ticket prices, opening hours, subway routes, highlights, and crowd-avoidance tips.";
@@ -46,7 +48,7 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
     <nav class="flex items-center gap-2 text-sm text-base-500" aria-label="Breadcrumb">
       <a href="/" class="hover:text-accent">Home</a>
       <Icons name="chevron-right" size={14} />
-      <a href={"/#" + a.type} class="hover:text-accent">{a.type.charAt(0).toUpperCase() + a.type.slice(1)}</a>
+      <a href="/#must-do" class="hover:text-accent">Attractions</a>
       <Icons name="chevron-right" size={14} />
       <span class="text-base-900">{a.name}</span>
     </nav>
@@ -59,8 +61,48 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
       <span class="flex items-center gap-1"><Icons name="clock" size={16} />{a.duration}</span>
       <span class="flex items-center gap-1"><Icons name="ticket" size={16} />{a.freeEntry ? "Free Entry" : fmtPrice(a.ticketLow, a.ticketHigh)}</span>
       {a.unesco && <span class="px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">UNESCO World Heritage</span>}
+      <span class="px-2 py-0.5 rounded text-xs font-medium bg-[#ccfbf1] text-[#0f766e]">Updated: August 2026</span>
     </div>
     <p class="text-base text-base-600 leading-relaxed">{a.description}</p>
+  </section>
+
+  {extras && extras.whyVisit.length > 0 && (
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <h2 class="text-xl font-semibold mb-4">Why It&rsquo;s Worth Visiting</h2>
+      <div class="space-y-4">
+        {extras.whyVisit.map((p: string) => (
+          <p class="text-base text-base-600 leading-relaxed">{p}</p>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {extras && extras.whatToExpect.length > 0 && (
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <h2 class="text-xl font-semibold mb-4">What to Expect</h2>
+      <div class="space-y-4">
+        {extras.whatToExpect.map((p: string) => (
+          <p class="text-base text-base-600 leading-relaxed">{p}</p>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
+    <div class="overflow-hidden rounded-xl border border-base-200 shadow-sm">
+      <img
+        src={"/images/attractions/" + a.slug + ".webp"}
+        alt={a.bestPhotoSpot ? a.bestPhotoSpot : a.name + " in Beijing"}
+        width="1200"
+        height="798"
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full object-cover object-center"
+      />
+    </div>
+    <p class="mt-3 text-center text-sm text-base-400">
+      {a.bestPhotoSpot ? a.bestPhotoSpot : a.name + ", one of Beijing's must-visit attractions."}
+    </p>
   </section>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
@@ -96,6 +138,20 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
     <p class="text-sm text-base-500">Beijing subway operates from approximately 5am to 11pm daily. Fares range from CNY 3 to 9. English signage and announcements are available on all lines.</p>
   </section>
 
+  {extras && extras.visitPlan.length > 0 && (
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <h2 class="text-xl font-semibold mb-4">How to Spend Your Time</h2>
+      <ol class="space-y-4">
+        {extras.visitPlan.map((step: string, i: number) => (
+          <li class="flex items-start gap-3">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-bg text-accent font-semibold text-sm">{i + 1}</span>
+            <p class="text-base text-base-600 leading-relaxed pt-0.5">{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
     <h2 class="text-xl font-semibold mb-4">Insider\u2019s Tip</h2>
     <div class="border-l-4 border-accent pl-4 py-2 bg-accent-bg/30 rounded-r">
@@ -122,6 +178,31 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
     <h2 class="text-xl font-semibold mb-4">Best Photo Spot</h2>
     <div class="flex items-start gap-3"><Icons name="star" size={20} class="text-accent mt-0.5 shrink-0" /><p class="text-base text-base-600 leading-relaxed">{a.bestPhotoSpot}</p></div>
   </section>
+
+  {extras && extras.goodToKnow.length > 0 && (
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <h2 class="text-xl font-semibold mb-4">Good to Know</h2>
+      <ul class="space-y-2">
+        {extras.goodToKnow.map((item: string) => (
+          <li class="flex items-start gap-2 text-base-600"><Icons name="check" size={18} class="text-accent mt-0.5 shrink-0" /><span>{item}</span></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {extras && extras.faq.length > 0 && (
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <h2 class="text-xl font-semibold mb-4">{a.name}: Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {extras.faq.map((f: { q: string; a: string }) => (
+          <div class="border border-base-200 rounded-lg p-5">
+            <h3 class="font-semibold text-base-900 mb-2">{f.q}</h3>
+            <p class="text-sm text-base-600 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
 
   {related.length > 0 && (
     <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-t border-base-200 pt-8">
