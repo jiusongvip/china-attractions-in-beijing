@@ -80,7 +80,7 @@ const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
           btn.setAttribute("aria-expanded", String(!open));
         });
         document.addEventListener("click", (e) => {
-          if (!btn.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+          if (!btn.contains(e.target) && !menu.contains(e.target)) {
             menu.classList.add("hidden");
             btn.setAttribute("aria-expanded", "false");
           }
