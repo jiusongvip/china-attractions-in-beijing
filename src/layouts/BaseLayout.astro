@@ -17,6 +17,14 @@ const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-W8991N7D1T"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W8991N7D1T');
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
@@ -62,7 +70,7 @@ const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
     <slot />
   </main>
   <Footer />
-  <script>
+  <script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
       const btn = document.getElementById("mobile-menu-btn");
       const menu = document.getElementById("mobile-menu");
@@ -72,7 +80,7 @@ const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
           btn.setAttribute("aria-expanded", String(!open));
         });
         document.addEventListener("click", (e) => {
-          if (!btn.contains(e.target) && !menu.contains(e.target)) {
+          if (!btn.contains(e.target as Node) && !menu.contains(e.target as Node)) {
             menu.classList.add("hidden");
             btn.setAttribute("aria-expanded", "false");
           }
