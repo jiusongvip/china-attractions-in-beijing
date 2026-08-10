@@ -10,8 +10,8 @@ export interface Props {
 }
 
 const { title, description, image = "/images/og-default.svg" } = Astro.props;
-const rawPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
-const canonical = new URL(rawPath, Astro.site).href;
+const rawPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '');
+const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
 ---
 
 <!doctype html>
