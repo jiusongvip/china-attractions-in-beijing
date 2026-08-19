@@ -13,23 +13,23 @@ const days = [
 ];
 
 const planSteps = [
-  { n: 1, title: "Pick dates", text: "Apr-May & Sep-Oct are best. Skip Oct 1-7 Golden Week.", href: "/best-time", linkText: "Month-by-month →" },
-  { n: 2, title: "Copy itinerary", text: "Day 1 palace. Day 2 wall. Day 3 gardens — done.", href: "/collections/beijing-3-day-itinerary", linkText: "3-day plan →" },
-  { n: 3, title: "Know the cost", text: "Free to CNY 100 per attraction. Our price table is always current.", href: "/blog/cost-of-beijing-trip", linkText: "Compare prices →" },
-  { n: 4, title: "Sort logistics", text: "Visa, subway card, translation app, passport. Handle before you fly.", href: "/faq", linkText: "China prep →" },
+  { n: 1, title: "Pick dates", text: "Apr-May & Sep-Oct are best. Skip Oct 1-7 Golden Week.", href: "/best-time/", linkText: "Month-by-month →" },
+  { n: 2, title: "Copy itinerary", text: "Day 1 palace. Day 2 wall. Day 3 gardens — done.", href: "/collections/beijing-3-day-itinerary/", linkText: "3-day plan →" },
+  { n: 3, title: "Know the cost", text: "Free to CNY 100 per attraction. Our price table is always current.", href: "/blog/cost-of-beijing-trip/", linkText: "Compare prices →" },
+  { n: 4, title: "Sort logistics", text: "Visa, subway card, translation app, passport. Handle before you fly.", href: "/faq/", linkText: "China prep →" },
 ];
 
 const decidingCards = [
-  { icon: "star", color: "text-[#0f766e]", title: "Is Beijing worth visiting?", text: "For history and food lovers, absolutely — it\u2019s a top-three China destination. Honest pros and cons inside.", href: "/about", linkText: "Honest assessment →" },
-  { icon: "ticket", color: "text-[#d4a373]", title: "How much does it cost?", text: "3-day: free to CNY 300 depending on style. Real 2026 prices.", href: "/blog/cost-of-beijing-trip", linkText: "Budget breakdown →" },
-  { icon: "map-pin", color: "text-[#2dd4bf]", title: "Too much to choose?", text: "Mutianyu or Badaling? Palace or garden? Our comparisons settle the classics.", href: "/compare/badaling-vs-mutianyu", linkText: "See comparisons →" },
+  { icon: "star", color: "text-[#0f766e]", title: "Is Beijing worth visiting?", text: "For history and food lovers, absolutely — it\u2019s a top-three China destination. Honest pros and cons inside.", href: "/about/", linkText: "Honest assessment →" },
+  { icon: "ticket", color: "text-[#d4a373]", title: "How much does it cost?", text: "3-day: free to CNY 300 depending on style. Real 2026 prices.", href: "/blog/cost-of-beijing-trip/", linkText: "Budget breakdown →" },
+  { icon: "map-pin", color: "text-[#2dd4bf]", title: "Too much to choose?", text: "Mutianyu or Badaling? Palace or garden? Our comparisons settle the classics.", href: "/compare/badaling-vs-mutianyu/", linkText: "See comparisons →" },
 ];
 
 const compareCards = [
-  { title: "Badaling vs Mutianyu", icon: "building-castle", desc: "The two most famous Great Wall sections — crowds, scenery, cable car, and the toboggan.", href: "/compare/badaling-vs-mutianyu" },
-  { title: "Forbidden City vs Summer Palace", icon: "building-castle", desc: "Power vs pleasure — the two grandest imperial sites and how they reward you differently.", href: "/compare/forbidden-city-vs-summer-palace" },
-  { title: "Summer Palace vs Beihai Park", icon: "trees", desc: "One vast destination garden, one central interlude — which fits your itinerary.", href: "/compare/summer-palace-vs-beihai-park" },
-  { title: "Lama Temple vs Temple of Heaven", icon: "temple", desc: "Living faith vs imperial ritual — atmosphere, the Buddha, and the Hall of Prayer.", href: "/compare/lama-temple-vs-temple-of-heaven" },
+  { title: "Badaling vs Mutianyu", icon: "building-castle", desc: "The two most famous Great Wall sections — crowds, scenery, cable car, and the toboggan.", href: "/compare/badaling-vs-mutianyu/" },
+  { title: "Forbidden City vs Summer Palace", icon: "building-castle", desc: "Power vs pleasure — the two grandest imperial sites and how they reward you differently.", href: "/compare/forbidden-city-vs-summer-palace/" },
+  { title: "Summer Palace vs Beihai Park", icon: "trees", desc: "One vast destination garden, one central interlude — which fits your itinerary.", href: "/compare/summer-palace-vs-beihai-park/" },
+  { title: "Lama Temple vs Temple of Heaven", icon: "temple", desc: "Living faith vs imperial ritual — atmosphere, the Buddha, and the Hall of Prayer.", href: "/compare/lama-temple-vs-temple-of-heaven/" },
 ];
 
 const seasons = [
@@ -49,12 +49,12 @@ const checkList = [
 ];
 
 const quickPicks = [
-  { label: "Things to Do", href: "/things-to-do", icon: "star" },
-  { label: "Family-friendly", href: "/collections/beijing-with-kids", icon: "users" },
-  { label: "Free Attractions", href: "/collections/free-beijing-attractions", icon: "ticket" },
+  { label: "Things to Do", href: "/things-to-do/", icon: "star" },
+  { label: "Family-friendly", href: "/collections/beijing-with-kids/", icon: "users" },
+  { label: "Free Attractions", href: "/collections/free-beijing-attractions/", icon: "ticket" },
   { label: "What to Eat", href: "#food", icon: "bowl" },
   { label: "Where to Stay", href: "#stay", icon: "bed" },
-  { label: "Subway Guide", href: "/subway-guide", icon: "map-pin" },
+  { label: "Subway Guide", href: "/subway-guide/", icon: "map-pin" },
 ];
 
 const foodItems = [
@@ -124,7 +124,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
         </div>
       </div>
       <div class="flex shrink-0 flex-col items-center lg:items-end gap-4">
-        <a href="/collections/beijing-3-day-itinerary" class="group flex flex-col items-center gap-3 transition-all hover:scale-105">
+        <a href="/collections/beijing-3-day-itinerary/" class="group flex flex-col items-center gap-3 transition-all hover:scale-105">
           <span class="flex h-28 w-28 items-center justify-center rounded-full bg-white text-[#0f766e] shadow-2xl shadow-black/30 transition-all group-hover:shadow-[#0f766e]/30 group-hover:bg-[#ccfbf1]">
             <Icons name="arrow-right" size={36} />
           </span>
@@ -158,13 +158,13 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
         ))}
       </div>
       <div class="mt-10 text-center">
-        <a href="/collections/beijing-3-day-itinerary" class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0f766e] shadow-lg transition-all hover:shadow-xl hover:scale-105">Full 3-Day Itinerary
+        <a href="/collections/beijing-3-day-itinerary/" class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0f766e] shadow-lg transition-all hover:shadow-xl hover:scale-105">Full 3-Day Itinerary
           <Icons name="chevron-right" size={16} />
         </a>
         <div class="mt-4 flex justify-center gap-4 text-sm">
-          <a href="/collections/beijing-with-kids" class="text-white/60 hover:text-white transition-colors">With kids</a>
+          <a href="/collections/beijing-with-kids/" class="text-white/60 hover:text-white transition-colors">With kids</a>
           <span class="text-white/30">|</span>
-          <a href="/collections/free-beijing-attractions" class="text-white/60 hover:text-white transition-colors">On a budget</a>
+          <a href="/collections/free-beijing-attractions/" class="text-white/60 hover:text-white transition-colors">On a budget</a>
         </div>
       </div>
     </div>
@@ -293,7 +293,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
         ))}
       </div>
       <div class="mt-8 text-center">
-        <a href="/best-time" class="inline-flex items-center text-sm font-semibold text-white hover:text-[#99f6e4] hover:underline">Full month-by-month guide with temperatures and crowds →</a>
+        <a href="/best-time/" class="inline-flex items-center text-sm font-semibold text-white hover:text-[#99f6e4] hover:underline">Full month-by-month guide with temperatures and crowds →</a>
       </div>
     </div>
   </section>

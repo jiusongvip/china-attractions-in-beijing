@@ -6,10 +6,9 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://china-attractions-in-beijing.com",
+  site: "https://www.china-attractions-in-beijing.com",
   output: "static",
-  trailingSlash: "never",
-  build: { format: "file" },
+  trailingSlash: "always",
   vite: {
     plugins: [tailwindcss()]
   },

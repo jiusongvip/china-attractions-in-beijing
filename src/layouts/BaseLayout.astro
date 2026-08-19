@@ -10,8 +10,9 @@ export interface Props {
 }
 
 const { title, description, image = "/images/og-default.svg" } = Astro.props;
-const rawPath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '');
-const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
+const canonical = Astro.url.pathname === '/'
+  ? new URL('/', Astro.site).href.replace(/\/$/, '')
+  : new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -42,11 +43,11 @@ const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "China Attractions in Beijing",
-      "url": "https://china-attractions-in-beijing.com",
+      "url": "https://www.china-attractions-in-beijing.com",
       "description": "Complete 2026 guide to Beijing's best attractions. Ticket prices, subway directions, seasonal tips, and honest recommendations from the Great Wall to hidden hutongs.",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://china-attractions-in-beijing.com/search?q={search_term_string}",
+        "target": "https://www.china-attractions-in-beijing.com/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -56,7 +57,7 @@ const canonical = new URL(rawPath || '/', Astro.site).href.replace(/\/$/, '');
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "China Attractions in Beijing",
-      "url": "https://china-attractions-in-beijing.com",
+      "url": "https://www.china-attractions-in-beijing.com",
       "description": "Independent travel guide to Beijing attractions with firsthand reviews, practical tips, and up-to-date ticket and transit information.",
       "email": "hello@china-attractions-in-beijing.com",
       "foundingDate": "2026",
