@@ -25,8 +25,17 @@ const pageDesc = label.label + " in Beijing — ticket prices, opening hours, su
     {typeIntros[type as string] && <p class="text-base text-base-600 leading-relaxed max-w-3xl mb-8">{typeIntros[type as string]}</p>}
   </div>
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-base-900 mb-6">All {label.label} Attractions</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((a) => <AttractionCard attraction={a} />)}
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-base-900 mb-4">Practical Tips for Visiting {label.label} Sites in Beijing</h2>
+    <div class="max-w-3xl space-y-4 text-base text-base-600 leading-relaxed">
+      <p>Tickets for {label.label.toLowerCase()} attractions in Beijing are best booked online in advance &mdash; the Forbidden City and National Museum in particular sell out days ahead during peak season. Bring your passport: it is required for entry at every major site, and tickets are issued per passport number.</p>
+      <p>Mornings are consistently quieter across all categories. Most sites open at 8 or 8:30am, and tour groups typically arrive from 9:30am onward. Nearly all indoor {label.label.toLowerCase()} venues close on Mondays, while parks and temples stay open year-round.</p>
+      <p>The subway covers almost every attraction on this page &mdash; fares run CNY 3-9 with full English signage. Check our <a href="/subway-guide/" class="text-accent hover:underline font-medium">subway guide</a> for station exits, and the <a href="/blog/cost-of-beijing-trip/" class="text-accent hover:underline font-medium">cost guide</a> for budgeting your visit.</p>
     </div>
   </section>
 </BaseLayout>

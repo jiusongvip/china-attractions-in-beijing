@@ -15,7 +15,12 @@ if (!a) return Astro.redirect("/404");
 const extras = attractionExtras[a.slug];
 
 const pageTitle = a.name + " Beijing: Tickets & Tips [2026]";
-const pageDesc = "Planning your visit to " + a.name + " in Beijing? Our 2026 guide: ticket prices, opening hours, subway routes, highlights, and crowd-avoidance tips.";
+const descTail = " Ticket prices, opening hours, subway directions and tips for 2026.";
+const maxBase = 160 - descTail.length;
+const descBase = a.description.length <= maxBase
+  ? a.description
+  : a.description.slice(0, maxBase).replace(/\s+\S*$/, "") + "…";
+const pageDesc = descBase + descTail;
 const fmtPrice = (lo: number, hi: number) => lo === hi ? "CNY " + lo : "CNY " + lo + " – CNY " + hi;
 const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug).slice(0, 3);
 ---
@@ -202,7 +207,7 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
       <h2 class="text-xl font-semibold mb-4">More {a.type.charAt(0).toUpperCase() + a.type.slice(1)} Attractions</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {related.map((r: typeof a) => (
-          <a href={"/attractions/" + r.slug} class="card group block p-4">
+          <a href={"/attractions/" + r.slug + "/"} class="card group block p-4">
             <h3 class="font-medium text-base-900 group-hover:text-accent transition-colors mb-1">{r.name}</h3>
             <p class="text-xs text-base-500">{r.duration} &middot; {r.freeEntry ? "Free" : "CNY " + r.ticketLow + "-" + r.ticketHigh}</p>
           </a>

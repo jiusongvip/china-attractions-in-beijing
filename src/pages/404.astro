@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icons from "../components/Icons.astro";
+
+const popularLinks = [
+  { label: "Forbidden City Guide", href: "/attractions/forbidden-city/", icon: "building-castle" },
+  { label: "Great Wall at Mutianyu", href: "/attractions/great-wall-mutianyu/", icon: "building-castle" },
+  { label: "3-Day Itinerary", href: "/collections/beijing-3-day-itinerary/", icon: "map-pin" },
+  { label: "Attraction Comparisons", href: "/#compare-guides", icon: "star" },
+  { label: "Subway Guide", href: "/subway-guide/", icon: "train" },
+  { label: "Travel FAQ", href: "/faq/", icon: "ticket" },
+];
+---
+
+<BaseLayout
+  title="Page Not Found (404) | China Attractions in Beijing"
+  description="The page you are looking for does not exist. Explore our Beijing attraction guides, itineraries, comparisons, and practical travel tips instead."
+  noindex={true}
+>
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/hero-tiananmen.webp')"></div>
+    <div class="absolute inset-0 bg-[#0a3b36]/90"></div>
+    <div class="relative z-10 mx-auto max-w-3xl px-6 text-center">
+      <p class="font-display text-7xl md:text-8xl text-white/90">404</p>
+      <h1 class="mt-4 font-display text-3xl md:text-5xl font-normal tracking-tight text-white">This page got lost like a tourist in the hutongs</h1>
+      <p class="mt-5 text-lg text-white/80">The page you're looking for doesn't exist or has moved. Here are the most useful guides instead:</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {popularLinks.map((l) => (
+          <a href={l.href} class="card-playful group flex items-center gap-3 rounded-2xl bg-white p-5 shadow-sm border border-[#d5d0c4]/40 hover:border-[#99f6e4]/60 transition-all">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#ccfbf1]/50 text-[#0f766e]"><Icons name={l.icon} size={18} /></span>
+            <span class="font-semibold text-[#1c1a16] group-hover:text-[#0f766e] transition-colors">{l.label}</span>
+          </a>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <a href="/" class="inline-flex items-center gap-2 rounded-full bg-[#0f766e] px-7 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-xl hover:scale-105">
+          Back to the homepage
+          <Icons name="arrow-right" size={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -7,9 +7,9 @@ const pageTitle = "China Attractions in Beijing: Plan Your Trip [2026]";
 const pageDesc = "Plan your Beijing trip with confidence. Pre-trip checklist, attraction comparisons, subway directions, and curated itineraries — all in one guide.";
 
 const days = [
-  { n: 1, kicker: "Day 1", title: "Forbidden City & Tiananmen", desc: "Walk the palace halls, stand in the world\u2019s largest square, and climb Jingshan for the rooftop panorama at sunset.", note: "4-5 hours · Line 1", link: "/attractions/forbidden-city", linkText: "Forbidden City guide" },
-  { n: 2, kicker: "Day 2", title: "Great Wall at Mutianyu", desc: "Cable car up, 23 watchtowers west, then the toboggan down. Forest views with a fraction of Badaling\u2019s crowds.", note: "Full day · driver", link: "/attractions/great-wall-mutianyu", linkText: "Mutianyu guide" },
-  { n: 3, kicker: "Day 3", title: "Gardens & Temples", desc: "Morning tai chi at the Temple of Heaven, afternoon on Kunming Lake at the Summer Palace, evening on Guijie Street.", note: "Two districts, one plan", link: "/attractions/summer-palace", linkText: "Summer Palace guide" },
+  { n: 1, kicker: "Day 1", title: "Forbidden City & Tiananmen", desc: "Walk the palace halls, stand in the world\u2019s largest square, and climb Jingshan for the rooftop panorama at sunset.", note: "4-5 hours · Line 1", link: "/attractions/forbidden-city/", linkText: "Forbidden City guide" },
+  { n: 2, kicker: "Day 2", title: "Great Wall at Mutianyu", desc: "Cable car up, 23 watchtowers west, then the toboggan down. Forest views with a fraction of Badaling\u2019s crowds.", note: "Full day · driver", link: "/attractions/great-wall-mutianyu/", linkText: "Mutianyu guide" },
+  { n: 3, kicker: "Day 3", title: "Gardens & Temples", desc: "Morning tai chi at the Temple of Heaven, afternoon on Kunming Lake at the Summer Palace, evening on Guijie Street.", note: "Two districts, one plan", link: "/attractions/summer-palace/", linkText: "Summer Palace guide" },
 ];
 
 const planSteps = [
@@ -40,11 +40,11 @@ const seasons = [
 ];
 
 const checkList = [
-  { step: "1", text: "Check visa requirements for your nationality", detail: "Most visitors need an L tourist visa. 54 countries qualify for 144-hour transit without a visa.", link: "/faq" },
-  { step: "2", text: "Book Forbidden City tickets in advance", detail: "Released 7 days online, sold out in minutes in peak season. Passport number required.", link: "/attractions/forbidden-city" },
+  { step: "1", text: "Check visa requirements for your nationality", detail: "Most visitors need an L tourist visa. 54 countries qualify for 144-hour transit without a visa.", link: "/faq/" },
+  { step: "2", text: "Book Forbidden City tickets in advance", detail: "Released 7 days online, sold out in minutes in peak season. Passport number required.", link: "/attractions/forbidden-city/" },
   { step: "3", text: "Download a translation app", detail: "Google Translate or Baidu with offline packs. Subway is English-friendly, restaurants rarely are.", link: null },
-  { step: "4", text: "Get a Yikatong card on arrival", detail: "Any subway station. Tap on metro, buses, and some taxis.", link: "/subway-guide" },
-  { step: "5", text: "Pick the right season", detail: "Best: April-May and September-October. Avoid National Day week.", link: "/best-time" },
+  { step: "4", text: "Get a Yikatong card on arrival", detail: "Any subway station. Tap on metro, buses, and some taxis.", link: "/subway-guide/" },
+  { step: "5", text: "Pick the right season", detail: "Best: April-May and September-October. Avoid National Day week.", link: "/best-time/" },
   { step: "6", text: "Always carry your passport", detail: "Required for attraction entry, hotels, and police checks. Originals only.", link: null },
 ];
 
@@ -74,9 +74,9 @@ const stayAreas = [
 ];
 
 const faqs = [
-  { q: "How many days do I need to see Beijing\u2019s main attractions?", a: "3 to 4 days covers the essentials: Forbidden City, Great Wall, Temple of Heaven, and Summer Palace. See our <a href=\"/collections/beijing-3-day-itinerary\" class=\"underline text-white\">3-day itinerary</a> for a ready-made plan." },
+  { q: "How many days do I need to see Beijing\u2019s main attractions?", a: "3 to 4 days covers the essentials: Forbidden City, Great Wall, Temple of Heaven, and Summer Palace. See our <a href=\"/collections/beijing-3-day-itinerary/\" class=\"underline text-white\">3-day itinerary</a> for a ready-made plan." },
   { q: "Do I need a visa to visit Beijing?", a: "Most foreign visitors need a Chinese tourist visa (L visa). Travelers from 54 countries qualify for 144-hour transit without visa when transiting to a third country. Always verify with your local Chinese embassy before travel." },
-  { q: "Mutianyu or Badaling — which Great Wall section should I visit?", a: "Mutianyu is our recommendation for most visitors: fewer crowds and a fun toboggan slide. Badaling is the classic choice. See our <a href=\"/compare/badaling-vs-mutianyu\" class=\"underline text-white\">full comparison guide</a>." },
+  { q: "Mutianyu or Badaling — which Great Wall section should I visit?", a: "Mutianyu is our recommendation for most visitors: fewer crowds and a fun toboggan slide. Badaling is the classic choice. See our <a href=\"/compare/badaling-vs-mutianyu/\" class=\"underline text-white\">full comparison guide</a>." },
   { q: "How do I book tickets for the Forbidden City?", a: "Tickets are released online 7 days in advance and sell out within minutes during peak season. You must enter your passport number to book. One passport, one ticket, and no on-site sales." },
   { q: "Is it easy to get around Beijing without speaking Chinese?", a: "The subway has full English signage and announcements on all lines. Major attractions have English ticket machines. Download a translation app for restaurants and taxis." },
   { q: "What should I do after visiting the Forbidden City?", a: "Climb Jingshan Park directly north for the best panoramic view of the palace rooftops (10-min walk, CNY 2). Then walk east to Nanluoguxiang hutong for boutique shops and street food." },
@@ -108,12 +108,12 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
 
   <!-- 1. Hero -->
   <section class="relative min-h-screen flex items-center overflow-hidden -mt-[68px]">
-    <img src="/images/hero-tiananmen.webp" alt="Tiananmen at the north end of Beijing's central axis, wide shot" class="absolute inset-0 h-full w-full object-cover" width="1200" height="798" />
+    <img src="/images/hero-tiananmen.webp" alt="Tiananmen at the north end of Beijing's central axis, wide shot" class="absolute inset-0 h-full w-full object-cover" width="1200" height="798" fetchpriority="high" />
     <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
     <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-16 px-6 pt-32 lg:flex-row lg:items-center lg:pt-0">
       <div class="max-w-xl lg:max-w-2xl">
         <span class="inline-block rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white mb-6">Independent Travel Guide · 2026</span>
-        <h1 class="font-display text-5xl font-normal tracking-tight text-white md:text-7xl lg:text-[6rem] lg:leading-[0.95] drop-shadow-md">China Attractions<br/>in Beijing</h1>
+        <h1 class="font-display text-5xl font-normal tracking-tight text-white md:text-7xl lg:text-[6rem] lg:leading-[0.95] drop-shadow-md">China Attractions <br/>in Beijing</h1>
         <p class="mt-6 text-lg leading-relaxed text-white/90 md:text-xl max-w-lg drop-shadow">Real ticket prices, subway exits, and honest comparisons. A guide built for actually planning your trip.</p>
         <div class="mt-6 flex flex-wrap gap-3 text-sm text-white/80">
           <span class="flex items-center gap-1.5"><Icons name="clock" size={16} class="text-white/60" /> Plan in 3-4 days</span>
@@ -172,7 +172,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
 
   <!-- 3. How to Plan -->
   <section class="relative py-24 md:py-32 overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/attractions/forbidden-city.jpg')"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/images/attractions/forbidden-city.webp')"></div>
     <div class="absolute inset-0 bg-white/92"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6">
       <div class="text-center mb-14">
@@ -205,7 +205,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       </div>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {topPicks.map((a) => (
-          <a href={`/attractions/${a.slug}`} class="card-playful group block overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 scroll-reveal">
+          <a href={`/attractions/${a.slug}/`} class="card-playful group block overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 scroll-reveal">
             <div class="aspect-[16/10] overflow-hidden">
               <img src={`/images/attractions/${a.slug}.webp`} alt={a.name} width="800" height="500" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" loading="lazy" decoding="async" />
             </div>
