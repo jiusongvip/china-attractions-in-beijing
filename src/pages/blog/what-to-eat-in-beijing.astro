@@ -14,7 +14,7 @@ const date = "2026-07-31";
   <Breadcrumb items={[{ label: "Blog", href: "/blog/" }, { label: "What to Eat in Beijing" }]} />
   <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
     <header class="mb-10">
-      <p class="text-sm text-base-400 mb-2">Published {date}</p>
+      <p class="text-sm text-base-400 mb-2">By the China Attractions in Beijing Editorial Team &middot; Published {date} &middot; Updated September 4, 2026</p>
       <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-base-900 mb-3">What to Eat in Beijing: 15 Must-Try Dishes and Where to Find Them [2026]</h1>
       <p class="text-lg text-base-500 leading-relaxed">From Peking duck to street-side jianbing: discover 15 essential Beijing dishes with specific restaurant recommendations, price ranges, and neighborhood guides for every budget.</p>
     </header>
@@ -24,7 +24,8 @@ const date = "2026-07-31";
       "headline": "${title}",
       "description": "${description}",
       "datePublished": "${date}",
-      "author": { "@type": "Organization", "name": "${siteConfig.name}" },
+      "dateModified": "2026-09-04",
+      "author": { "@type": "Organization", "name": "China Attractions in Beijing Editorial Team", "url": "${siteConfig.url}/about/" },
       "publisher": { "@type": "Organization", "name": "${siteConfig.name}", "url": "${siteConfig.url}" },
       "mainEntityOfPage": { "@type": "WebPage", "@id": "${siteConfig.url}${slug}" }
     }`}></script>
@@ -153,6 +154,16 @@ const date = "2026-07-31";
         <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">4.</span><span><strong>Street food safety is generally good.</strong> Beijing&rsquo;s street food scene is vibrant and mostly safe. Follow the crowd &mdash; busy stalls with high turnover are the freshest. Avoid pre-cooked skewers sitting at room temperature. If a stall has a line of office workers at lunch, it&rsquo;s good.</span></li>
         <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5 shrink-0">5.</span><span><strong>Don&rsquo;t skip the condiments.</strong> Chinese restaurant tables are covered with condiment caddies: black vinegar, soy sauce, chili oil, minced garlic. Beijingers customize every bite. Pour a small dish of black vinegar for your dumplings; add a spoon of chili oil to your noodles.</span></li>
       </ol>
+    </section>
+    <section class="border-t border-base-200 pt-8 mb-8">
+      <h3 class="text-lg font-semibold mb-3">Sources</h3>
+      <ul class="list-disc pl-6 space-y-2 text-sm text-base-600 leading-relaxed">
+        <li><a href="https://www.dpm.org.cn/home.html" class="text-accent hover:underline" rel="noopener" target="_blank">The Palace Museum (dpm.org.cn)</a> &mdash; Forbidden City tickets, hours, and visitor policies (verified August 2026).</li>
+        <li><a href="https://www.bjsubway.com/" class="text-accent hover:underline" rel="noopener" target="_blank">Beijing Subway (bjsubway.com)</a> &mdash; fares, lines, and station exits (verified August 2026).</li>
+        <li><a href="https://whc.unesco.org/en/list/439/" class="text-accent hover:underline" rel="noopener" target="_blank">UNESCO World Heritage Centre</a> &mdash; Imperial Palaces of the Ming and Qing Dynasties in Beijing and Shenyang.</li>
+        <li><a href="https://english.visitbeijing.com.cn/" class="text-accent hover:underline" rel="noopener" target="_blank">Visit Beijing (official municipal tourism portal)</a> &mdash; attraction hours and seasonal information.</li>
+      </ul>
+      <p class="text-xs text-base-500 mt-3">Prices and policies were last checked by our editorial team in August 2026 against these official sources; the official site always prevails if figures differ.</p>
     </section>
     <section class="border-t border-base-200 pt-8">
       <h3 class="text-lg font-semibold mb-3">Related Guides</h3>

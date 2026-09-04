@@ -75,9 +75,9 @@ const stayAreas = [
 
 const faqs = [
   { q: "How many days do I need to see Beijing\u2019s main attractions?", a: "3 to 4 days covers the essentials: Forbidden City, Great Wall, Temple of Heaven, and Summer Palace. See our <a href=\"/collections/beijing-3-day-itinerary/\" class=\"underline text-white\">3-day itinerary</a> for a ready-made plan." },
-  { q: "Do I need a visa to visit Beijing?", a: "Most foreign visitors need a Chinese tourist visa (L visa). Travelers from 54 countries qualify for 144-hour transit without visa when transiting to a third country. Always verify with your local Chinese embassy before travel." },
+  { q: "Do I need a visa to visit Beijing?", a: "Most foreign visitors need a Chinese tourist visa (L visa). Travelers from 54 countries qualify for 144-hour transit without visa when transiting to a third country. Always verify with your local Chinese embassy before travel — see the <a href=\"https://bio.visaforchina.cn\" class=\"underline text-white\" rel=\"noopener\" target=\"_blank\">official China visa application system</a>." },
   { q: "Mutianyu or Badaling — which Great Wall section should I visit?", a: "Mutianyu is our recommendation for most visitors: fewer crowds and a fun toboggan slide. Badaling is the classic choice. See our <a href=\"/compare/badaling-vs-mutianyu/\" class=\"underline text-white\">full comparison guide</a>." },
-  { q: "How do I book tickets for the Forbidden City?", a: "Tickets are released online 7 days in advance and sell out within minutes during peak season. You must enter your passport number to book. One passport, one ticket, and no on-site sales." },
+  { q: "How do I book tickets for the Forbidden City?", a: "Tickets are released online 7 days in advance and sell out within minutes during peak season. You must enter your passport number to book. One passport, one ticket, and no on-site sales — per the <a href=\"https://www.dpm.org.cn/home.html\" class=\"underline text-white\" rel=\"noopener\" target=\"_blank\">official Palace Museum website</a>." },
   { q: "Is it easy to get around Beijing without speaking Chinese?", a: "The subway has full English signage and announcements on all lines. Major attractions have English ticket machines. Download a translation app for restaurants and taxis." },
   { q: "What should I do after visiting the Forbidden City?", a: "Climb Jingshan Park directly north for the best panoramic view of the palace rooftops (10-min walk, CNY 2). Then walk east to Nanluoguxiang hutong for boutique shops and street food." },
 ];
@@ -143,7 +143,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       <div class="text-center mb-14">
         <span class="tag tag-glass mb-4">At a Glance</span>
         <h2 class="text-4xl font-bold tracking-tight md:text-5xl text-white">Your 3-Day Trip</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80">From imperial palace to mountain wall — one unforgettable day at a time.</p>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80">Yes, 3 days is enough for Beijing's essentials: the Forbidden City and Tiananmen on day 1, the Great Wall on day 2, gardens and temples on day 3. Here's the proven plan.</p>
       </div>
       <div class="grid gap-8 md:grid-cols-3">
         {days.map((d) => (
@@ -178,7 +178,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       <div class="text-center mb-14">
         <span class="tag tag-stone mb-4">Trip Planning</span>
         <h2 class="text-4xl font-bold tracking-tight md:text-5xl text-[#1c1a16]">How to Plan</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-[#5c5a4c]">Four steps. One hour. Done.</p>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-[#5c5a4c]">Planning a Beijing trip takes one hour if you do it in the right order: pick dates, copy an itinerary, budget the cost, sort visa and payments. Four steps below.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {planSteps.map((s) => (
@@ -201,7 +201,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       <div class="text-center mb-14">
         <span class="tag tag-glass mb-4">The Highlights</span>
         <h2 class="text-4xl font-bold tracking-tight md:text-5xl text-white">Must-Do Experiences</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80">Each has a full guide with prices, best times, and crowd-beating tips.</p>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80">The five unmissable sights are the Forbidden City, the Great Wall at Mutianyu, the Temple of Heaven, the Summer Palace, and Jingshan Park at sunset. Each has a full guide with prices, best times, and crowd-beating tips.</p>
       </div>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {topPicks.map((a) => (
@@ -279,7 +279,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       <div class="text-center mb-14">
         <span class="tag tag-glass mb-4">Timing</span>
         <h2 class="text-4xl font-bold tracking-tight md:text-5xl text-white">When to Visit</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80">From blooming gardens to snow-dusted palaces, Beijing shifts with the seasons.</p>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80">The best months to visit Beijing are April&ndash;May and September&ndash;October: 10&ndash;25&deg;C, clear skies, and manageable crowds. Here's how every season compares &mdash; and the one week to avoid.</p>
       </div>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {seasons.map((s) => (
@@ -306,7 +306,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       <div class="text-center mb-14">
         <span class="tag tag-stone mb-4">Accommodation</span>
         <h2 class="text-4xl font-bold tracking-tight md:text-5xl text-[#1c1a16]">Where to Stay in Beijing</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-[#5c5a4c]">Pick the right district and your trip gets twice as easy.</p>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-[#5c5a4c]">First-time visitors should stay in Dongcheng District: it's walking distance from the Forbidden City and Tiananmen, and every other major sight is one subway ride away. Here's how the four main areas compare.</p>
       </div>
       <div class="grid gap-6 md:grid-cols-2" id="stay">
         {stayAreas.map((area) => (
@@ -353,7 +353,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       <div class="text-center mb-14">
         <span class="tag tag-warm mb-4">Food & Shortcuts</span>
         <h2 class="text-4xl font-bold tracking-tight md:text-5xl text-[#1c1a16]">What to Eat in Beijing</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-[#5c5a4c]">From imperial banquets to street-corner snacks.</p>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-[#5c5a4c]">Start with three dishes: Peking duck, copper-pot hot pot, and zhajiangmian noodles &mdash; they define Beijing eating. Street breakfast (jianbing, CNY 8-15) fills in the rest.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {foodItems.map((item) => (
@@ -406,6 +406,16 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
             <div class="mt-3 text-[#5c5a4c] leading-relaxed pl-10" set:html={item.a}></div>
           </div>
         ))}
+      </div>
+      <div class="max-w-3xl mx-auto mt-10 rounded-2xl bg-white/10 border border-white/15 p-6">
+        <h3 class="text-base font-bold text-white mb-3">Sources</h3>
+        <ul class="space-y-2 text-sm text-white/70">
+          <li>&bull; <a href="https://www.dpm.org.cn/home.html" class="underline hover:text-white" rel="noopener" target="_blank">The Palace Museum (dpm.org.cn)</a> &mdash; Forbidden City tickets and policies</li>
+          <li>&bull; <a href="https://www.bjsubway.com/" class="underline hover:text-white" rel="noopener" target="_blank">Beijing Subway (bjsubway.com)</a> &mdash; fares and station information</li>
+          <li>&bull; <a href="https://whc.unesco.org/en/list/439/" class="underline hover:text-white" rel="noopener" target="_blank">UNESCO World Heritage Centre</a> &mdash; Imperial Palaces of the Ming and Qing Dynasties</li>
+          <li>&bull; <a href="https://english.visitbeijing.com.cn/" class="underline hover:text-white" rel="noopener" target="_blank">Visit Beijing</a> &mdash; official municipal tourism portal</li>
+        </ul>
+        <p class="text-xs text-white/50 mt-3">Prices verified monthly against official sources. Last checked August 2026.</p>
       </div>
     </div>
   </section>

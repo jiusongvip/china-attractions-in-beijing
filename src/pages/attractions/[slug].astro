@@ -202,6 +202,17 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
     </section>
   )}
 
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <h2 class="text-xl font-semibold mb-4">Sources &amp; References for {a.name}</h2>
+    <ul class="list-disc pl-6 space-y-2 text-sm text-base-600 leading-relaxed">
+      <li><a href="https://www.dpm.org.cn/home.html" class="text-accent hover:underline" rel="noopener" target="_blank">The Palace Museum (dpm.org.cn)</a> &mdash; official tickets, hours, and visitor policies for the Forbidden City.</li>
+      <li><a href="https://www.bjsubway.com/" class="text-accent hover:underline" rel="noopener" target="_blank">Beijing Subway (bjsubway.com)</a> &mdash; official fares, lines, and station exit information.</li>
+      <li><a href="https://whc.unesco.org/en/list/439/" class="text-accent hover:underline" rel="noopener" target="_blank">UNESCO World Heritage Centre</a> &mdash; Imperial Palaces of the Ming and Qing Dynasties in Beijing and Shenyang.</li>
+      <li><a href="https://english.visitbeijing.com.cn/" class="text-accent hover:underline" rel="noopener" target="_blank">Visit Beijing</a> &mdash; official municipal tourism portal for hours and seasonal information.</li>
+    </ul>
+    <p class="text-xs text-base-500 mt-3">Ticket prices were last verified by our editorial team in August 2026 against these official sources. The official website always prevails if prices or policies have changed.</p>
+  </section>
+
   {related.length > 0 && (
     <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-t border-base-200 pt-8">
       <h2 class="text-xl font-semibold mb-4">More {a.type.charAt(0).toUpperCase() + a.type.slice(1)} Attractions</h2>

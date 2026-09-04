@@ -47,10 +47,12 @@ const canonical = Astro.url.pathname === '/'
       "name": "China Attractions in Beijing",
       "url": "https://www.china-attractions-in-beijing.com",
       "description": "Complete 2026 guide to Beijing's best attractions. Ticket prices, subway directions, seasonal tips, and honest recommendations from the Great Wall to hidden hutongs.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.china-attractions-in-beijing.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Organization",
+        "name": "China Attractions in Beijing",
+        "url": "https://www.china-attractions-in-beijing.com",
+        "logo": "https://www.china-attractions-in-beijing.com/favicon.svg"
       }
     }
   </script>
@@ -60,10 +62,14 @@ const canonical = Astro.url.pathname === '/'
       "@type": "Organization",
       "name": "China Attractions in Beijing",
       "url": "https://www.china-attractions-in-beijing.com",
+      "logo": "https://www.china-attractions-in-beijing.com/favicon.svg",
       "description": "Independent travel guide to Beijing attractions with firsthand reviews, practical tips, and up-to-date ticket and transit information.",
       "email": "hello@china-attractions-in-beijing.com",
       "foundingDate": "2026",
-      "areaServed": { "@type": "City", "name": "Beijing" }
+      "areaServed": { "@type": "City", "name": "Beijing" },
+      "sameAs": [
+        "https://github.com/jiusongvip/china-attractions-in-beijing"
+      ]
     }
   </script>
 </head>
