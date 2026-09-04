@@ -1,5 +1,8 @@
-// 构建后处理：将 sitemap 首页 URL 去掉尾斜杠，与 canonical 保持一致（内页保持尾斜杠）
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+// Post-build sitemap fixes:
+// 1. Remove trailing slash from homepage URL (canonical has no trailing slash).
+// 2. Serve the sitemap index at /sitemap.xml (robots.txt declares this path,
+//    but @astrojs/sitemap only writes sitemap-index.xml, so /sitemap.xml 404s).
+import { readFileSync, writeFileSync, readdirSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
 
 const distDir = "dist";
@@ -17,10 +20,13 @@ for (const file of readdirSync(distDir)) {
   if (content.includes(target)) {
     writeFileSync(path, content.replaceAll(target, replacement));
     changed = true;
-    console.log(`✓ ${file}: 首页 URL 已去尾斜杠`);
+    console.log(`OK ${file}: homepage URL trailing slash removed`);
   }
 }
 
 if (!changed) {
-  console.log("⚠ 未找到需要处理的 sitemap 首页 URL");
+  console.log("WARN no sitemap homepage URL needed fixing");
 }
+
+copyFileSync(join(distDir, "sitemap-index.xml"), join(distDir, "sitemap.xml"));
+console.log("OK sitemap.xml written (copy of sitemap-index.xml)");
