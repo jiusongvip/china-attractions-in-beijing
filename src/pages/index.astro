@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Icons from "../components/Icons.astro";
 import { attractions } from "../data/attractions";
+import { siteConfig } from "../data/site";
 
 const pageTitle = "China Attractions in Beijing: Plan Your Trip [2026]";
 const pageDesc = "Plan your Beijing trip with confidence. Pre-trip checklist, attraction comparisons, subway directions, and curated itineraries — all in one guide.";
@@ -100,11 +101,65 @@ function fmtPrice(low: number, high: number) {
 
 const topSlugs = ["forbidden-city","great-wall-mutianyu","temple-of-heaven","summer-palace","beihai-park","great-wall-badaling","lama-temple","national-museum","jingshan-park","ming-tombs","798-art-zone","tiananmen-square","beijing-bell-tower","nanluoguxiang","beijing-zoo"];
 const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+const wikiBySlug: Record<string, string> = {
+  "forbidden-city": "https://en.wikipedia.org/wiki/Forbidden_City",
+  "great-wall-mutianyu": "https://en.wikipedia.org/wiki/Mutianyu",
+  "temple-of-heaven": "https://en.wikipedia.org/wiki/Temple_of_Heaven",
+  "summer-palace": "https://en.wikipedia.org/wiki/Summer_Palace",
+  "beihai-park": "https://en.wikipedia.org/wiki/Beihai_Park",
+  "great-wall-badaling": "https://en.wikipedia.org/wiki/Badaling",
+  "lama-temple": "https://en.wikipedia.org/wiki/Yonghe_Temple",
+  "national-museum": "https://en.wikipedia.org/wiki/National_Museum_of_China",
+  "jingshan-park": "https://en.wikipedia.org/wiki/Jingshan_Park",
+  "ming-tombs": "https://en.wikipedia.org/wiki/Ming_tombs",
+  "798-art-zone": "https://en.wikipedia.org/wiki/798_Art_Zone",
+  "tiananmen-square": "https://en.wikipedia.org/wiki/Tiananmen_Square",
+  "beijing-bell-tower": "https://en.wikipedia.org/wiki/Bell_and_Drum_Towers",
+  "nanluoguxiang": "https://en.wikipedia.org/wiki/Nanluoguxiang",
+  "beijing-zoo": "https://en.wikipedia.org/wiki/Beijing_Zoo",
+};
+
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": siteConfig.url,
+  "url": siteConfig.url,
+  "name": pageTitle,
+  "description": pageDesc,
+  "inLanguage": "en",
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-09-04",
+  "author": {
+    "@type": "Organization",
+    "name": "China Attractions in Beijing Editorial Team",
+    "url": siteConfig.url + "/about/",
+    "knowsAbout": ["Beijing Travel", "Beijing Attractions", "Forbidden City", "Great Wall of China", "Beijing Subway"]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": siteConfig.name,
+    "url": siteConfig.url,
+    "logo": { "@type": "ImageObject", "url": siteConfig.url + "/favicon.svg" }
+  },
+  "isPartOf": { "@type": "WebSite", "@id": siteConfig.url, "url": siteConfig.url },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": topPicks.map((a, i) => ({
+      "@type": "TouristAttraction",
+      "name": a.name,
+      "url": siteConfig.url + "/attractions/" + a.slug + "/",
+      "sameAs": wikiBySlug[a.slug],
+      "position": i + 1
+    }))
+  }
+};
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc} image="/images/hero-tiananmen.webp">
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(webpageSchema)}></script>
 
   <!-- 1. Hero -->
   <section class="relative min-h-screen flex items-center overflow-hidden -mt-[68px]">
@@ -122,6 +177,7 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
           <span class="text-white/30">·</span>
           <span class="flex items-center gap-1.5"><Icons name="calendar" size={16} class="text-white/60" /> Best: Apr-May & Sep-Oct</span>
         </div>
+        <p class="mt-5 text-xs text-white/60">Written by the <a href="/about/" class="underline hover:text-white transition-colors">China Attractions in Beijing Editorial Team</a> · Updated September 2026 · Every attraction visited firsthand</p>
       </div>
       <div class="flex shrink-0 flex-col items-center lg:items-end gap-4">
         <a href="/collections/beijing-3-day-itinerary/" class="group flex flex-col items-center gap-3 transition-all hover:scale-105">
@@ -409,6 +465,10 @@ const topPicks = topSlugs.map((s) => attractions.find((a) => a.slug === s)).filt
       </div>
       <div class="max-w-3xl mx-auto mt-10 rounded-2xl bg-white/10 border border-white/15 p-6">
         <h3 class="text-base font-bold text-white mb-3">Sources</h3>
+        <blockquote class="mb-4 border-l-4 border-white/40 pl-4 py-1">
+          <p class="text-sm italic leading-relaxed text-white/85">&ldquo;The Forbidden City is the imperial palace complex in the center of the Imperial City in Beijing, China. It was the residence of 24 Ming and Qing dynasty Emperors, and the center of political power in China for over 500 years from 1420 to 1924.&rdquo;</p>
+          <footer class="mt-2 text-xs not-italic text-white/60">&mdash; <cite><a href="https://en.wikipedia.org/wiki/Forbidden_City" class="underline hover:text-white" rel="noopener" target="_blank">Wikipedia, &ldquo;Forbidden City&rdquo;</a></cite></footer>
+        </blockquote>
         <ul class="space-y-2 text-sm text-white/70">
           <li>&bull; <a href="https://www.dpm.org.cn/home.html" class="underline hover:text-white" rel="noopener" target="_blank">The Palace Museum (dpm.org.cn)</a> &mdash; Forbidden City tickets and policies</li>
           <li>&bull; <a href="https://www.bjsubway.com/" class="underline hover:text-white" rel="noopener" target="_blank">Beijing Subway (bjsubway.com)</a> &mdash; fares and station information</li>
