@@ -9,6 +9,9 @@ export default defineConfig({
   site: "https://www.china-attractions-in-beijing.com",
   output: "static",
   trailingSlash: "always",
+  build: {
+    inlineStylesheets: "always"
+  },
   vite: {
     plugins: [tailwindcss()]
   },

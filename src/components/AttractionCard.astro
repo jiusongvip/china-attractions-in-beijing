@@ -13,7 +13,7 @@ const formatPrice = (low: number, high: number) => {
 <a href={`/attractions/${attraction.slug}/`} class="card group block">
   <div class="aspect-[16/9] bg-base-100 relative overflow-hidden">
     <img
-      src={`/images/attractions/${attraction.slug}.webp`}
+      src={attraction.image ?? `/images/attractions/${attraction.slug}.webp`}
       alt={attraction.name}
       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       loading="lazy"

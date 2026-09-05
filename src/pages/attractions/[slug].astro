@@ -32,7 +32,7 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
     "name":a.name,
     "description":a.description,
     "url":new URL(Astro.url.pathname, Astro.site).href,
-    "image":new URL("/images/attractions/" + a.slug + ".webp", Astro.site).href,
+    "image":new URL(a.image ?? "/images/attractions/" + a.slug + ".webp", Astro.site).href,
     "address":{"@type":"PostalAddress","addressLocality":"Beijing","addressRegion":"Beijing","addressCountry":"CN"},
     "geo":a.district ? {"@type":"GeoCoordinates","addressLocality":a.district,"addressCountry":"CN"} : undefined,
     "isAccessibleForFree":a.freeEntry,
@@ -89,7 +89,7 @@ const related = attractions.filter((x) => x.type === a.type && x.slug !== a.slug
   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
     <div class="overflow-hidden rounded-xl border border-base-200 shadow-sm">
       <img
-        src={"/images/attractions/" + a.slug + ".webp"}
+        src={a.image ?? "/images/attractions/" + a.slug + ".webp"}
         alt={a.bestPhotoSpot ? a.bestPhotoSpot : a.name + " in Beijing"}
         width="1200"
         height="798"
