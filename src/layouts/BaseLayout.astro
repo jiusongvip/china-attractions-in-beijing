@@ -30,6 +30,9 @@ const canonical = Astro.url.pathname === '/'
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-400-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-600-normal.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-serif-display-latin-400-normal.woff2" crossorigin />
   <meta name="description" content={description} />
   {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="canonical" href={canonical} />
@@ -104,13 +107,7 @@ const canonical = Astro.url.pathname === '/'
           });
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         revealEls.forEach(el => {
-          // Already in viewport on load? Show immediately.
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            el.classList.add('visible');
-          } else {
-            observer.observe(el);
-          }
+          observer.observe(el);
         });
       } else {
         document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('visible'));
