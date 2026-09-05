@@ -238,7 +238,7 @@ const webpageSchema = {
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {planSteps.map((s) => (
-          <a href={s.link} class="card-playful group rounded-2xl bg-white p-7 shadow-sm border border-[#d5d0c4]/40 scroll-reveal">
+          <a href={s.href} class="card-playful group rounded-2xl bg-white p-7 shadow-sm border border-[#d5d0c4]/40 scroll-reveal">
             <div class={`step-circle step-circle-${s.n} mb-4`}>{s.n}</div>
             <h3 class="text-xl font-bold text-[#1c1a16] group-hover:text-[#0f766e]">{s.title}</h3>
             <p class="mt-2 text-sm text-[#5c5a4c]">{s.text}</p>
